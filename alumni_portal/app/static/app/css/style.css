@@ -1,0 +1,78 @@
+/* HERO — CSS-only carousel */
+    .hero{position:relative; background:var(--blue-900); color:#fff}
+    .carousel{position:relative; border-bottom:var(--thin)}
+    .carousel .viewport{overflow:hidden; border-radius:0}
+    .carousel input{position:absolute; opacity:0; pointer-events:none}
+    .slides{display:flex; width:300%; transition:transform .6s ease}
+    .slide{min-width:100%; position:relative; height:60vh; min-height:420px}
+    .slide img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+    .slide::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(8,23,52,.25), rgba(8,23,52,.55))}
+    .caption{position:absolute; inset:0; display:grid; place-items:center; text-align:center; padding:24px; z-index:1}
+    .caption > div{max-width:900px}
+    .caption h1{font-size:clamp(1.8rem,1.1rem + 2.8vw,3rem); margin:0 0 8px}
+    .caption p{color:#eaf2ff}
+
+    /* dots */
+    .dots{position:absolute; left:50%; transform:translateX(-50%); bottom:16px; display:flex; gap:10px; z-index:2}
+    .dots label{width:12px; height:12px; border-radius:999px; border:2px solid #fff; background:transparent; cursor:pointer}
+
+    /* radio → translate */
+    #c1:checked ~ .slides{transform:translateX(0%)}
+    #c2:checked ~ .slides{transform:translateX(-100%)}
+    #c3:checked ~ .slides{transform:translateX(-200%)}
+
+    /* active dot */
+    #c1:checked ~ .dots label:nth-child(1),
+    #c2:checked ~ .dots label:nth-child(2),
+    #c3:checked ~ .dots label:nth-child(3){background:#fff}
+
+    /* Utility */
+    .grid{display:grid; gap:18px}
+    .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    @media (max-width: 1000px){.cols-4{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 860px){.cols-3{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 640px){.cols-2,.cols-3,.cols-4{grid-template-columns:1fr}}
+
+    .card{background:#fff; border:var(--thin); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow)}
+    .muted{color:#3b5a8d}
+    .badge{display:inline-block; font-size:.8rem; font-weight:700; color:var(--blue-900); background:var(--blue-200); padding:6px 10px; border-radius:999px}
+    .btn{display:inline-block; padding:10px 14px; border-radius:12px; border:var(--thin); background:#fff; font-weight:700}
+    .btn.primary{background:var(--blue-600); color:#fff; border-color:transparent}
+
+    /* Quick access shortcuts */
+    .shortcut{display:block; position:relative}
+    .shortcut h3{margin:0 0 6px}
+    .shortcut p{margin:0}
+    .card.shortcut{padding:18px 20px}
+    .card.shortcut::before{content:""; position:absolute; left:0; right:0; top:0; height:4px; background:var(--blue-600); opacity:.18; border-radius:18px 18px 0 0}
+    .card.shortcut:hover{background:var(--blue-100)}
+
+    /* Image tiles / gallery */
+    .tiles{display:grid; gap:12px; grid-template-columns:2fr 1fr 1fr}
+    @media (max-width:980px){.tiles{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.tiles{grid-template-columns:1fr}}
+    .tile{aspect-ratio:16/9; border-radius:14px; overflow:hidden; border:var(--thin); background:#e6eefc}
+    .tile img{width:100%; height:100%; object-fit:cover}
+
+    /* Announcements */
+    .announce{display:grid; gap:12px; grid-template-columns:repeat(4,minmax(0,1fr))}
+    @media (max-width:1000px){.announce{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:560px){.announce{grid-template-columns:1fr}}
+
+    /* Partners (logo grid) */
+    .logo-grid{display:grid; gap:14px; grid-template-columns:repeat(6,minmax(0,1fr))}
+    @media (max-width:1100px){.logo-grid{grid-template-columns:repeat(4,1fr)}}
+    @media (max-width:700px){.logo-grid{grid-template-columns:repeat(2,1fr)}}
+    .logo-tile{display:grid; place-items:center; aspect-ratio:3/2; border-radius:14px; border:var(--thin); background:#f5f9ff}
+    .logo-tile img{max-width:70%; max-height:70%; object-fit:contain; filter:grayscale(100%)}
+
+    /* Director profile layout */
+    .profile-grid{display:grid; gap:18px; grid-template-columns:260px 1fr}
+    @media (max-width:760px){.profile-grid{grid-template-columns:1fr}}
+    .profile-photo{width:100%; max-width:260px; aspect-ratio:1/1; border-radius:18px; overflow:hidden; border:var(--thin); background:#e6eefc}
+    .profile-photo img{width:100%; height:100%; object-fit:cover}
+    .profile-name{margin:0}
+    .profile-qual{color:#49679c; margin:4px 0 12px}
+    .profile-msg{margin:0; padding:18px 22px; border-left:4px solid var(--blue-500); background:var(--blue-100); border-radius:12px}

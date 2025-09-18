@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- HERO / Carousel (no JS) -->
+  <section class="hero" aria-label="Featured">
+    <div class="carousel">
+      <div class="viewport">
+        <!-- radios before slides to control transform -->
+        <input type="radio" name="c" id="c1" checked>
+        <input type="radio" name="c" id="c2">
+        <input type="radio" name="c" id="c3">
+
+        <div class="slides">
+          <div class="slide">
+            <img src="assets/hero1.jpg" alt="Campus view and alumni gathering">
+            <div class="caption"><div>
+              <h1>Stronger Together, Wherever We Are</h1>
+              <p class="lead">A vibrant network of graduates supporting students, research, and community.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <img src="assets/hero2.jpg" alt="Convocation and celebrations">
+            <div class="caption"><div>
+              <h1>Celebrating Excellence & Service</h1>
+              <p class="lead">Recognising alumni achievements and giving back to the alma mater.</p>
+            </div></div>
+          </div>
+          <div class="slide">
+            <img src="assets/hero3.jpg" alt="Seminar with industry leaders">
+            <div class="caption"><div>
+              <h1>Connecting Campus & Industry</h1>
+              <p class="lead">Talks, mentorship, and partnerships that open doors.</p>
+            </div></div>
+          </div>
+        </div>
+        <div class="dots" role="tablist" aria-label="Select slide">
+          <label for="c1" aria-label="Go to slide 1"></label>
+          <label for="c2" aria-label="Go to slide 2"></label>
+          <label for="c3" aria-label="Go to slide 3"></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    
+    <!-- STUDENT WELFARE -->
+    <section class="section" id="welfare" style="background:var(--blue-100)">
+      <div class="container">
+        <h2>STUDENT WELFARE</h2>
+        <div class="grid cols-3" style="margin-top:12px">
+          <article class="card"><h3>Wellbeing & Counselling</h3><p class="muted">Confidential support, workshops, and referrals.</p></article>
+          <article class="card"><h3>Financial Support</h3><p class="muted">Scholarships, assistantships, and emergency aid information.</p></article>
+          <article class="card"><h3>Clubs & Mentoring</h3><p class="muted">Peer groups and alumni mentors for guidance.</p></article>
+        </div>
+        <div class="tiles" style="margin-top:12px">
+          <div class="tile"><img src="assets/welfare-1.jpg" alt="Student counselling"></div>
+          <div class="tile"><img src="assets/welfare-2.jpg" alt="Mentoring session"></div>
+          <div class="tile"><img src="assets/welfare-3.jpg" alt="Help desk"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVITIES -->
+    <section class="section" id="activities">
+      <div class="container">
+        <h2>ACTIVITIES</h2>
+        <div class="grid cols-4" style="margin-top:12px">
+          <article class="card"><h3>Reunions</h3><p class="muted">Cross-batch networking and campus nostalgia.</p></article>
+          <article class="card"><h3>Scholarships</h3><p class="muted">Merit & need-based support for students.</p></article>
+          <article class="card"><h3>Mentorship</h3><p class="muted">Guidance from experienced alumni.</p></article>
+          <article class="card"><h3>Community Outreach</h3><p class="muted">Serving society through initiatives.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ILLUSTROUS ALUMNI -->
+    <section class="section" id="illustrious-alumni">
+      <div class="container">
+        <h2>ILLUSTROUS ALUMNI</h2>
+        <div class="grid cols-3" style="margin-top:12px">
+          <article class="card"><div class="tile" style="margin:0 0 10px"><img src="assets/spot-1.jpg" alt="Alumnus portrait"></div><h3>Alumnus A</h3><p class="muted">Global contribution in veterinary research.</p></article>
+          <article class="card"><div class="tile" style="margin:0 0 10px"><img src="assets/spot-2.jpg" alt="Alumna portrait"></div><h3>Alumna B</h3><p class="muted">Leading community outreach initiatives.</p></article>
+          <article class="card"><div class="tile" style="margin:0 0 10px"><img src="assets/spot-3.jpg" alt="Alumnus portrait"></div><h3>Alumnus C</h3><p class="muted">Entrepreneurship in animal health.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- READING RESOURCES -->
+    <section class="section" id="reading-resources" style="background:var(--blue-100)">
+      <div class="container">
+        <h2>READING RESOURCES</h2>
+        <div class="grid cols-3" style="margin-top:12px">
+          <a class="card" href="#"><strong>Clinical Guides</strong><p class="muted">Protocols & SOPs</p></a>
+          <a class="card" href="#"><strong>Research Papers</strong><p class="muted">Selected publications</p></a>
+          <a class="card" href="#"><strong>Reference Notes</strong><p class="muted">Lecture notes & handbooks</p></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MESSAGE FROM DIRECTOR -->
+    <section class="section" id="director-message">
+      <div class="container">
+        <h2>MESSAGE FROM DIRECTOR</h2>
+        <div class="profile-grid" style="margin-top:12px">
+          <div class="profile-photo"><img src="assets/director.jpg" alt="Director of Alumni, Dr. First Last"></div>
+          <article class="card">
+            <h3 class="profile-name">Dr. First Last</h3>
+            <p class="profile-qual">Ph.D., MVSc — Director, Alumni Relations</p>
+            <div class="profile-msg">
+              <p>Welcome to the KNPCVS Alumni community. Our graduates drive impact across clinical practice, research, public service, and industry. Through alumni support we strengthen student welfare, expand opportunities, and celebrate excellence. I invite you to engage with chapters, share your expertise, and help us mentor the next generation.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FARMER’S CORNER -->
+    <section class="section" id="farmers-corner" style="background:var(--blue-100)">
+      <div class="container">
+        <h2>FARMER’S CORNER</h2>
+        <div class="grid cols-3" style="margin-top:12px">
+          <article class="card"><h3>Dairy Health Tips</h3><p class="muted">Seasonal care, nutrition, and hygiene.</p></article>
+          <article class="card"><h3>Poultry Management</h3><p class="muted">Housing, feed, biosecurity basics.</p></article>
+          <article class="card"><h3>Vaccination Calendar</h3><p class="muted">Schedules for common diseases.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLINICAL CASE / SPOT -->
+    <section class="section" id="clinical-case">
+      <div class="container">
+        <h2>CLINICAL CASE / SPOT</h2>
+        <div class="grid cols-3" style="margin-top:12px">
+          <article class="card"><div class="tile" style="margin:0 0 10px"><img src="assets/case-1.jpg" alt="Clinical case"></div><h3>Case 01</h3><p class="muted">Brief vignette with key images.</p></article>
+          <article class="card"><div class="tile" style="margin:0 0 10px"><img src="assets/case-2.jpg" alt="Clinical case"></div><h3>Case 02</h3><p class="muted">Spot the sign — short discussion.</p></article>
+          <article class="card"><div class="tile" style="margin:0 0 10px"><img src="assets/case-3.jpg" alt="Clinical case"></div><h3>Case 03</h3><p class="muted">Imaging + lab snapshot.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- YOUR DIAGNOSIS -->
+    <section class="section" id="your-diagnosis" style="background:var(--blue-100)">
+      <div class="container">
+        <h2>YOUR DIAGNOSIS</h2>
+        <p class="lead">Weekly challenge for students and alumni.</p>
+        <div class="grid cols-2" style="margin-top:12px">
+          <article class="card"><div class="tile" style="margin:0 0 10px"><img src="assets/diagnosis-1.jpg" alt="Case of the week"></div><h3>Case of the Week</h3><p class="muted">Review the history, exam, and images to propose a diagnosis.</p></article>
+          <article class="card"><h3>How it Works</h3><ul class="muted" style="padding-left:18px; margin:6px 0 0"><li>Read the prompt</li><li>Discuss in study groups</li><li>Check the official solution posted next week</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOADS -->
+    <section class="section" id="downloads">
+      <div class="container">
+        <h2>DOWNLOADS</h2>
+        <div class="grid cols-3" style="margin-top:12px">
+          <a class="card" href="#"><strong>Bylaws (PDF)</strong><p class="muted">Constitution & governance</p></a>
+          <a class="card" href="#"><strong>Newsletter (PDF)</strong><p class="muted">Latest campus & alumni news</p></a>
+          <a class="card" href="#"><strong>Forms & Templates</strong><p class="muted">Membership, nominations, etc.</p></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTOGALLARY -->
+    <section class="section" id="photogallary" style="background:var(--blue-100)">
+      <div class="container">
+        <h2>PHOTOGALLARY</h2>
+        <div class="tiles" style="margin-top:12px">
+          <div class="tile"><img src="assets/gallery-1.jpg" alt="Alumni meet photo"></div>
+          <div class="tile"><img src="assets/gallery-2.jpg" alt="Seminar photo"></div>
+          <div class="tile"><img src="assets/gallery-3.jpg" alt="Campus photo"></div>
+        </div>
+      </div>
+    </section>
+</main>
+{% endblock %}
