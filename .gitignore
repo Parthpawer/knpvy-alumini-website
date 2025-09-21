@@ -1,1 +1,3 @@
 virtual-env/
+
+./alumni_portal\alumni_portal\db.sqlite3
