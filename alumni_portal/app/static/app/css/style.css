@@ -1,114 +1,373 @@
 :root{
-    /* Responsive height with sane bounds */
-    --carousel-min: 280px;
-    --carousel-ideal: 60vh;
-    --carousel-max: 720px;
+  /* Sizing */
+  --carousel-min: 280px;
+  --carousel-ideal: 60vh;
+  --carousel-max: 720px;
+  --dot: 12px;
+  --maxw: 1200px;
 
-    --dot: 12px;
-  }
+  /* Design tokens */
+  --radius: 18px;
+  --thin: 1px solid rgba(26,58,115,.18);
+  --shadow: 0 14px 30px rgba(13,38,79,.10);
+  --blue-100: #eaf2ff;
+  --blue-200: #d6e6ff;
+  --blue-500: #3e7fea;
+  --blue-700: #2358a5;
+  --blue-900: #11264f;
+  --muted: #3b5a8d;
+}
 
-  /* Reset for safety */
-  * { box-sizing: border-box; }
-  html, body { margin: 0; }
+/* Reset */
+*{ box-sizing:border-box; }
+html,body{ margin:0; }
 
-  .carousel {
-    position: relative;
-    width: 100%;          /* full page width */
-    overflow: hidden;     /* clip overflow */
-    background: #000;     /* behind images */
-  }
+/* ---------- Generic “tile” / image card ---------- */
+.tile{
+  aspect-ratio: 16/9;
+  border-radius: 14px;
+  overflow: hidden;
+  border: var(--thin);
+  background: #e6eefc;
+}
+.tile img{ width:100%; height:100%; object-fit:cover; display:block; }
 
-  .carousel-viewport {
-    height: clamp(var(--carousel-min), var(--carousel-ideal), var(--carousel-max));
-    position: relative;
-  }
+/* ---------- Simple image grid (tiles) ---------- */
+.tiles{ display:grid; gap:12px; grid-template-columns:2fr 1fr 1fr; }
+@media (max-width:980px){ .tiles{ grid-template-columns:1fr 1fr; } }
+@media (max-width:640px){ .tiles{ grid-template-columns:1fr; } }
 
-  .carousel-track {
-    display: flex;
-    height: 100%;
-    transition: transform .45s ease;
-    will-change: transform;
-    touch-action: pan-y;
-  }
+/* ---------- Reusable card ---------- */
+.card{
+  position:relative;
+  background:#fff;
+  border:var(--thin);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px;
+  overflow:hidden;
+}
+.card h3{ margin:0 0 6px; color:var(--blue-900); font-size:1.05rem; line-height:1.3; }
+.card .muted{ color:var(--muted); }
 
-  .carousel-slide {
-    position: relative;
-    flex: 0 0 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #000;
-  }
+/* ---------- Carousel ---------- */
+.carousel{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  background:#000;
+}
+.carousel-viewport{ height:clamp(var(--carousel-min), var(--carousel-ideal), var(--carousel-max)); position:relative; }
+.carousel-track{
+  display:flex; height:100%;
+  transition:transform .45s ease;
+  will-change:transform; touch-action:pan-y;
+}
+.carousel-slide{
+  position:relative; flex:0 0 100%; height:100%;
+  overflow:hidden; background:#000;
+}
+.carousel-slide img{
+  width:100%; height:100%;
+  object-fit:cover; object-position:center; display:block;
+  filter:brightness(.6);
+}
+.carousel-slide::after{
+  content:""; position:absolute; inset:auto 0 0 0; height:45%;
+  background:linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,0)); pointer-events:none;
+}
+.carousel-caption{
+  position:absolute; inset:0; display:grid; place-items:center; text-align:center;
+  color:#fff; padding:16px;
+}
+.carousel-caption>div{ max-width:min(900px, 92vw); }
+.carousel-caption h3{
+  margin:0 0 6px;
+  font:700 clamp(18px,3vw,28px)/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  text-shadow:0 2px 8px rgba(0,0,0,.6);
+}
+.carousel-caption p{
+  margin:0;
+  font:500 clamp(14px,2.3vw,18px)/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:#f0f3f7; text-shadow:0 1px 6px rgba(0,0,0,.55);
+}
 
-  /* Image behavior:
-     - fills the slide box
-     - small images stretch up
-     - large images crop to fit
-  */
-  .carousel-slide img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;     /* stretch small, crop big */
-    object-position: center;
-    display: block;
-  }
+/* Carousel controls */
+.carousel-btn{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:44px; height:44px; border:0; border-radius:999px;
+  background:rgba(0,0,0,.5); color:#fff; cursor:pointer;
+  display:grid; place-items:center;
+}
+.carousel-btn:hover{ background:rgba(0,0,0,.65); }
+.carousel-btn:focus-visible{ outline:3px solid #8ab6ff; outline-offset:2px; }
+.carousel-btn.prev{ left:12px; } .carousel-btn.next{ right:12px; }
+.carousel-btn svg{ width:22px; height:22px; }
 
-  /* Centered caption (h3 + p) */
-  .carousel-caption{
-    position: absolute; inset: 0;
-    display: grid; place-items: center;
-    text-align: center; color: #fff;
-    padding: 16px;
-  }
-  .carousel-caption > div{
-    max-width: min(900px, 92vw);
-  }
-  .carousel-caption h3{
-    margin: 0 0 6px;
-    font: 700 clamp(18px, 3vw, 28px)/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    text-shadow: 0 2px 8px rgba(0,0,0,.6);
-  }
-  .carousel-caption p{
-    margin: 0;
-    font: 500 clamp(14px, 2.3vw, 18px)/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    color: #f0f3f7;
-    text-shadow: 0 1px 6px rgba(0,0,0,.55);
-  }
+/* Carousel dots */
+.carousel-dots{
+  position:absolute; left:50%; transform:translateX(-50%);
+  bottom:12px; display:flex; gap:10px;
+}
+.carousel-dot{
+  width:var(--dot); height:var(--dot); border-radius:999px;
+  border:2px solid rgba(255,255,255,.95); background:transparent;
+  padding:0; cursor:pointer;
+}
+.carousel-dot[aria-current="true"]{ background:#fff; }
 
-  /* Soft gradient at bottom to help text readability (optional) */
-  .carousel-slide::after{
-    content:"";
-    position:absolute; left:0; right:0; bottom:0; height:45%;
-    background: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,0));
-    pointer-events: none;
-  }
+/* Carousel small-screen tweaks */
+@media (max-width:640px){
+  :root{ --carousel-ideal:48vh; --carousel-max:560px; }
+  .carousel-btn{ width:40px; height:40px; }
+}
 
-  /* Controls */
-  .carousel-btn{
-    position:absolute; top:50%; transform:translateY(-50%);
-    width:44px; height:44px; border:0; border-radius:999px;
-    background:rgba(0,0,0,.5); color:#fff; cursor:pointer;
-    display:grid; place-items:center;
-  }
-  .carousel-btn:hover{ background:rgba(0,0,0,.65); }
-  .carousel-btn:focus-visible{ outline:3px solid #8ab6ff; outline-offset:2px; }
-  .carousel-btn.prev{ left:12px; }
-  .carousel-btn.next{ right:12px; }
-  .carousel-btn svg{ width:22px; height:22px; }
+/* ---------- Sections / Containers ---------- */
+.section{ padding:50px; }
+.container{ max-width:var(--maxw); margin-inline:auto; padding-inline:24px; }
 
-  /* Dots */
-  .carousel-dots{
-    position:absolute; left:50%; transform:translateX(-50%);
-    bottom:12px; display:flex; gap:10px;
-  }
-  .carousel-dot{
-    width: var(--dot); height: var(--dot);
-    border-radius: 999px; border:2px solid rgba(255,255,255,.95);
-    background: transparent; padding:0; cursor:pointer;
-  }
-  .carousel-dot[aria-current="true"]{ background:#fff; }
+/* ---------- Announcements ---------- */
+#announcements .section-head{
+  display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+}
+#announcements .view-all{
+  font-weight:700; font-size:.95rem; color:var(--blue-700); text-decoration:none;
+}
+#announcements .view-all:hover{ text-decoration:underline; }
 
-  /* Tweak height on smaller screens */
-  @media (max-width: 640px){
-    :root{ --carousel-ideal: 48vh; --carousel-max: 560px; }
-    .carousel-btn{ width:40px; height:40px; }
-  }
+#announcements .announce{
+  display:grid; gap:12px; grid-template-columns:repeat(4, minmax(0,1fr)); margin-top:12px;
+}
+@media (max-width:1000px){ #announcements .announce{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px){  #announcements .announce{ grid-template-columns:1fr; } }
+
+#announcements .card{ padding:0; display:flex; flex-direction:column; }
+#announcements .card-media{
+  position:relative; width:100%; aspect-ratio:16/9; background:#e6eefc; overflow:hidden;
+}
+#announcements .card-media img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+#announcements .badge{
+  position:absolute; left:10px; top:10px; z-index:1;
+  display:inline-block; padding:6px 10px; border-radius:999px;
+  font-size:.8rem; font-weight:700; color:var(--blue-900);
+  background:rgba(255,255,255,.9); border:var(--thin);
+}
+#announcements .card-body{ padding:16px 16px 8px; }
+#announcements .card h3{ margin:0 0 6px; }
+#announcements .card p{ margin:0; color:var(--muted); }
+#announcements .card-foot{
+  margin-top:auto; padding:10px 16px 14px; border-top:var(--thin);
+  font-size:.92rem; color:#34507f; display:flex; align-items:center; gap:8px;
+}
+#announcements .card-foot .date{ font-weight:600; letter-spacing:.2px; }
+
+/* ---------- Student Welfare ---------- */
+.grid.cols-3{ display:grid; gap:18px; grid-template-columns:repeat(3,minmax(0,1fr)); }
+@media (max-width:1000px){ .grid.cols-3{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){  .grid.cols-3{ grid-template-columns:1fr; } }
+
+#welfare .card::before{
+  content:""; position:absolute; inset:0;
+  background:var(--card-bg, none) center/cover no-repeat; z-index:0;
+}
+#welfare .card::after{
+  content:""; position:absolute; inset:0; background:rgba(0,0,0,.45); z-index:1;
+}
+#welfare .card > *{ position:relative; z-index:2; color:#fff; }
+#welfare .card h3{ color:#fff; }
+#welfare .card .muted{ color:#e9f1ff; }
+
+/* Assign images */
+#welfare .grid.cols-3 > .card:nth-child(1){ --card-bg:url("assets/welfare-1.jpg"); }
+#welfare .grid.cols-3 > .card:nth-child(2){ --card-bg:url("assets/welfare-2.jpg"); }
+#welfare .grid.cols-3 > .card:nth-child(3){ --card-bg:url("assets/welfare-3.jpg"); }
+
+@media (hover:hover){
+  #welfare .card::before{ transition:transform .45s ease; }
+  #welfare .card:hover::before{ transform:scale(1.06); }
+}
+@media (max-width:640px){ #welfare .card::after{ background:rgba(0,0,0,.52); } }
+
+/* ---------- Alumni Spotlight ---------- */
+#illustrious-alumni .container{ max-width:var(--maxw); margin-inline:auto; padding-inline:24px; }
+#illustrious-alumni .grid{ display:grid; gap:18px; grid-template-columns:repeat(4, minmax(0,1fr)); }
+@media (max-width:1000px){ #illustrious-alumni .grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){  #illustrious-alumni .grid{ grid-template-columns:1fr; } }
+
+#illustrious-alumni .tile{ margin-bottom:10px; }
+
+/* ---------- Director Profile ---------- */
+.profile-grid{ display:grid; gap:18px; grid-template-columns:260px 1fr; }
+@media (max-width:760px){ .profile-grid{ grid-template-columns:1fr; } }
+
+.profile-photo{
+  width:100%; max-width:260px; aspect-ratio:1/1;
+  border-radius:var(--radius); overflow:hidden; border:var(--thin); background:#e6eefc;
+}
+.profile-photo img{ width:100%; height:100%; object-fit:cover; }
+.profile-name{ margin:0; }
+.profile-qual{ color:#49679c; margin:4px 0 12px; }
+.profile-msg{
+  margin:0; padding:18px 22px; border-left:4px solid var(--blue-500);
+  background:var(--blue-100); border-radius:12px;
+}
+
+/* ---------- Photogallary (kept ID as-is to match your HTML) ---------- */
+#photogallary h2{
+  margin:0 0 10px; font-weight:800; letter-spacing:.04em; text-transform:uppercase;
+  position:relative; padding-left:14px;
+}
+#photogallary h2::before{
+  content:""; position:absolute; left:0; top:.15em; bottom:.15em;
+  width:6px; border-radius:4px; background:var(--blue-700);
+}
+.photo-magazine{ margin-top:12px; }
+.photo-magazine .magazine-grid{
+  --row-h:220px;
+  display:grid; gap:12px;
+  grid-template-columns:2.15fr 1.15fr 1.6fr;
+  grid-auto-rows:var(--row-h);
+}
+.photo-magazine figure{
+  margin:0; position:relative; overflow:hidden;
+  border-radius:14px; border:var(--thin); background:#e6eefc; box-shadow:var(--shadow);
+}
+.photo-magazine img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .32s ease; }
+.photo-magazine figure:hover img{ transform:scale(1.04); }
+
+/* placement */
+.photo-magazine .item-a{ grid-column:1; grid-row:1 / span 2; }
+.photo-magazine .item-b{ grid-column:2; grid-row:1; }
+.photo-magazine .item-c{ grid-column:2; grid-row:2; display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.photo-magazine .item-c figure{ aspect-ratio:1/1; }
+.photo-magazine .item-d{ grid-column:3; grid-row:1 / span 2; }
+
+.photo-magazine .actions{
+  margin-top:10px; display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end;
+}
+.photo-magazine .btn-outline{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:10px 14px; min-height:44px; line-height:1;
+  background:transparent; border:1.5px dashed rgba(31,95,181,.55);
+  color:var(--blue-700); border-radius:10px; font-weight:700;
+  transition:background .2s ease, transform .06s ease;
+}
+.photo-magazine .btn-outline:hover{ background:var(--blue-200); }
+.photo-magazine .btn-outline:active{ transform:translateY(1px); }
+.photo-magazine .btn-outline:focus-visible{ outline:3px solid var(--blue-500); outline-offset:2px; }
+
+@media (max-width:1100px){
+  .photo-magazine .magazine-grid{ --row-h:200px; grid-template-columns:1.7fr 1.2fr; }
+  .photo-magazine .item-a{ grid-column:1; grid-row:1 / span 2; }
+  .photo-magazine .item-b{ grid-column:2; grid-row:1; }
+  .photo-magazine .item-c{ grid-column:2; grid-row:2; }
+  .photo-magazine .item-d{ grid-column:1 / -1; grid-row:auto; height:calc(var(--row-h) + 12px); }
+  .photo-magazine .item-d img{ height:100%; }
+  .photo-magazine .actions{ justify-content:center; }
+}
+@media (max-width:620px){
+  .photo-magazine .magazine-grid{ --row-h:200px; grid-template-columns:1fr; grid-auto-rows:var(--row-h); }
+  .photo-magazine .item-a,
+  .photo-magazine .item-b,
+  .photo-magazine .item-c,
+  .photo-magazine .item-d{ grid-column:1; grid-row:auto; }
+  .photo-magazine .actions{ width:100%; }
+  .photo-magazine .btn-outline{ width:100%; max-width:480px; text-align:center; }
+}
+
+/* ---------- Practice Hub (background image cards) ---------- */
+#practice-hub .container{ max-width:var(--maxw); margin-inline:auto; padding-inline:24px; }
+#practice-hub .grid.cols-2{ display:grid; gap:18px; grid-template-columns:repeat(2,minmax(0,1fr)); }
+@media (max-width:640px){ #practice-hub .grid.cols-2{ grid-template-columns:1fr; } }
+
+.card.bg-card{ color:#fff; }
+.card.bg-card::before{
+  content:""; position:absolute; inset:0;
+  background:var(--card-bg, none) center/cover no-repeat; z-index:0;
+}
+.card.bg-card::after{ content:""; position:absolute; inset:0; background:rgba(0,0,0,.45); z-index:1; }
+.card.bg-card > *{ position:relative; z-index:2; }
+.card.bg-card h3{ color:#fff; }
+.card.bg-card .muted{ color:#e9f1ff; }
+
+@media (hover:hover){
+  .card.bg-card::before{ transition:transform .4s ease; }
+  .card.bg-card:hover::before{ transform:scale(1.06); }
+}
+
+
+/* === Card Carousels (Announcements + Alumni) === */
+.cards-carousel{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto; /* [←] [viewport] [→] */
+  gap:12px;
+  align-items:center;
+  margin-top:12px;
+}
+
+/* Buttons sit beside the cards, not overlapping */
+.cc-btn{
+  width:44px; height:44px; border:0; border-radius:999px;
+  background:rgba(0,0,0,.5); color:#fff; display:grid; place-items:center; cursor:pointer;
+}
+.cc-btn:hover{ background:rgba(0,0,0,.65); }
+.cc-btn:focus-visible{ outline:3px solid #8ab6ff; outline-offset:2px; }
+.cc-btn[disabled]{ opacity:.45; cursor:default; }
+.cc-btn svg{ width:22px; height:22px; }
+
+.cc-viewport{
+  overflow:hidden; min-width:0; /* allow shrink */
+}
+
+/* Track uses flex; card width is 1/visible across breakpoints */
+.cc-track{
+  /* override any grid from existing theme */
+  display:flex !important;
+  grid-template-columns:unset !important;
+
+  --cc-gap:12px;
+  --cc-visible:4; /* JS will update per breakpoint */
+  gap:var(--cc-gap);
+  transition:transform .45s ease;
+  will-change:transform;
+}
+
+/* Each card fits exactly within the viewport width including inner gaps */
+.cards-carousel .cc-track > .card{
+  flex:0 0 calc((100% - (var(--cc-gap) * (var(--cc-visible) - 1))) / var(--cc-visible));
+}
+
+/* Small screens: optionally shrink buttons a touch */
+@media (max-width:640px){
+  .cc-btn{ width:40px; height:40px; }
+}
+
+/* Smaller arrows on smaller screens (cards-carousel version) */
+@media (max-width: 999px){
+  .cards-carousel{ gap:10px; }
+  .cc-btn{ width:40px; height:40px; }
+  .cc-btn svg{ width:20px; height:20px; }
+}
+
+@media (max-width: 640px){
+  .cards-carousel{ gap:8px; }
+  .cc-btn{ width:36px; height:36px; }
+  .cc-btn svg{ width:18px; height:18px; }
+}
+
+@media (max-width: 400px){
+  .cards-carousel{ gap:6px; }
+  .cc-btn{ width:32px; height:32px; }      /* keeps 32px minimum target */
+  .cc-btn svg{ width:16px; height:16px; }
+}
+
+/* Enable horizontal dragging without killing vertical scroll */
+.cc-viewport{ touch-action: pan-y; }
+
+/* Drag affordance + block text selection while dragging */
+.cc-track{ cursor: grab; }
+.cc-track.is-dragging{ cursor: grabbing; }
+body.no-select{ user-select: none; }
+
+/* (You already shrank arrows via media queries — keep those) */

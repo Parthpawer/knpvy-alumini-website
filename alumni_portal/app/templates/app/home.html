@@ -6,54 +6,360 @@
 
 {% block content %}
 
+<!-- Crousal -->
 <section>
   <!-- Carousel -->
-<div class="carousel" role="region" aria-roledescription="carousel" aria-label="Featured images">
-  <div class="carousel-viewport">
-    <div class="carousel-track" id="track">
-      <div class="carousel-slide">
-        <img src="{% static 'app/assets/crousal_1.png' %}" alt="Campus view and alumni gathering">
-        <div class="carousel-caption"><div>
-          <h3>Stronger Together, Wherever We Are</h3>
-          <p>A vibrant network of graduates supporting students, research, and community.</p>
-        </div></div>
+  <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Featured images">
+    <div class="carousel-viewport">
+      <div class="carousel-track" id="track">
+        <div class="carousel-slide">
+          <img src="{% static 'app/assets/crousal_1.png' %}" alt="Campus view and alumni gathering">
+          <div class="carousel-caption">
+            <div>
+              <h3>Stronger Together, Wherever We Are</h3>
+              <p>A vibrant network of graduates supporting students, research, and community.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img src="{% static 'app/assets/crousal_2.png' %}" alt="Convocation and celebrations">
+          <div class="carousel-caption">
+            <div>
+              <h3>Celebrating Excellence & Service</h3>
+              <p>Recognising alumni achievements and giving back to the alma mater.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img src="{% static 'app/assets/crousal_3.png' %}" alt="Seminar with industry leaders">
+          <div class="carousel-caption">
+            <div>
+              <h3>Connecting Campus & Industry</h3>
+              <p>Talks, mentorship, and partnerships that open doors.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="carousel-slide">
-        <img src="{% static 'app/assets/crousal_2.png' %}" alt="Convocation and celebrations">
-        <div class="carousel-caption"><div>
-          <h3>Celebrating Excellence & Service</h3>
-          <p>Recognising alumni achievements and giving back to the alma mater.</p>
-        </div></div>
+      <!-- Controls -->
+      <button class="carousel-btn prev" aria-label="Previous slide" id="prevBtn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+        </svg>
+      </button>
+      <button class="carousel-btn next" aria-label="Next slide" id="nextBtn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="m8.59 16.59 1.41 1.41L16 12 10 6 8.59 7.41 13.17 12z" />
+        </svg>
+      </button>
+
+      <!-- Dots -->
+      <div class="carousel-dots" role="tablist" aria-label="Choose slide">
+        <button class="carousel-dot" role="tab" aria-label="Slide 1" aria-controls="track" aria-current="true"
+          data-index="0"></button>
+        <button class="carousel-dot" role="tab" aria-label="Slide 2" aria-controls="track" data-index="1"></button>
+        <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-controls="track" data-index="2"></button>
       </div>
-
-      <div class="carousel-slide">
-        <img src="{% static 'app/assets/crousal_3.png' %}" alt="Seminar with industry leaders">
-        <div class="carousel-caption"><div>
-          <h3>Connecting Campus & Industry</h3>
-          <p>Talks, mentorship, and partnerships that open doors.</p>
-        </div></div>
-      </div>
-    </div>
-
-    <!-- Controls -->
-    <button class="carousel-btn prev" aria-label="Previous slide" id="prevBtn">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-    </button>
-    <button class="carousel-btn next" aria-label="Next slide" id="nextBtn">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m8.59 16.59 1.41 1.41L16 12 10 6 8.59 7.41 13.17 12z"/></svg>
-    </button>
-
-    <!-- Dots -->
-    <div class="carousel-dots" role="tablist" aria-label="Choose slide">
-      <button class="carousel-dot" role="tab" aria-label="Slide 1" aria-controls="track" aria-current="true" data-index="0"></button>
-      <button class="carousel-dot" role="tab" aria-label="Slide 2" aria-controls="track" data-index="1"></button>
-      <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-controls="track" data-index="2"></button>
     </div>
   </div>
-</div>
 
 </section>
 
-<script src="{% static 'js/script.js' %}"></script>
+<!-- Announcements / Notices -->
+<section class="section" id="announcements">
+  <div class="container">
+    <div class="section-head">
+      <h2>Announcements</h2>
+      <a class="view-all" href="#">View all</a>
+    </div>
+
+    <!-- Cards Carousel: [←] [viewport with track] [→] -->
+    <div class="cards-carousel" data-carousel="announcements">
+      <button class="cc-btn prev" aria-label="Previous announcements">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+
+      <div class="cc-viewport" role="region" aria-roledescription="carousel" aria-label="Announcements">
+        <!-- Keep your original class 'announce' for theme styles, add 'cc-track' -->
+        <div class="announce cc-track" id="announceTrack">
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/ann-1.jpg" alt="Annual Alumni Meet poster">
+              <span class="badge">Notice</span>
+            </div>
+            <div class="card-body">
+              <h3>Annual Alumni Meet 2025</h3>
+              <p class="muted">Registrations open for the grand reunion on campus.</p>
+            </div>
+            <div class="card-foot">
+              <time class="date" datetime="2025-09-18">18 Sep 2025</time>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/ann-2.jpg" alt="Scholarship announcement">
+              <span class="badge">Update</span>
+            </div>
+            <div class="card-body">
+              <h3>Scholarship Cycle</h3>
+              <p class="muted">Applications for merit & need-based scholarships now live.</p>
+            </div>
+            <div class="card-foot">
+              <time class="date" datetime="2025-09-12">12 Sep 2025</time>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/ann-3.jpg" alt="Mentorship program banner">
+              <span class="badge">Call</span>
+            </div>
+            <div class="card-body">
+              <h3>Mentorship Program</h3>
+              <p class="muted">Sign up to mentor final-year students across specialisations.</p>
+            </div>
+            <div class="card-foot">
+              <time class="date" datetime="2025-09-08">08 Sep 2025</time>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/ann-4.jpg" alt="Distinguished alumni feature">
+              <span class="badge">News</span>
+            </div>
+            <div class="card-body">
+              <h3>Illustrious Alumni</h3>
+              <p class="muted">Honouring distinguished alumni for global impact.</p>
+            </div>
+            <div class="card-foot">
+              <time class="date" datetime="2025-09-02">02 Sep 2025</time>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/ann-4.jpg" alt="Distinguished alumni feature">
+              <span class="badge">News</span>
+            </div>
+            <div class="card-body">
+              <h3>Illustrious Alumni</h3>
+              <p class="muted">Honouring distinguished alumni for global impact.</p>
+            </div>
+            <div class="card-foot">
+              <time class="date" datetime="2025-09-02">02 Sep 2025</time>
+            </div>
+          </article>
+
+          <!-- Add more announcement <article class="card">…</article> as needed -->
+        </div>
+      </div>
+
+      <button class="cc-btn next" aria-label="Next announcements">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m8.59 16.59 1.41 1.41L16 12 10 6 8.59 7.41 13.17 12z"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Student Welfare -->
+<section class="section" id="welfare" style="background:var(--blue-100)">
+  <div class="container">
+    <h2>Student Welfare</h2>
+    <div class="grid cols-3" style="margin-top:12px">
+      <article class="card" style="--card-bg: url({% static 'app/assets/scholarship_card.jpg' %})">
+        <h3>Scholarships</h3>
+        <p class="muted">Confidential support, workshops, and referrals.</p>
+      </article>
+
+      <article class="card" style="--card-bg: url({% static 'app/assets/assistanship_card.jpg' %})">
+        <h3>Assistantships</h3>
+        <p class="muted">Scholarships, assistantships, and emergency aid information.</p>
+      </article>
+
+      <article class="card" style="--card-bg: url({% static 'app/assets/student_awards_card.webp' %})">
+        <h3>Student's Awards</h3>
+        <p class="muted">Peer groups and alumni mentors for guidance.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Alumni Spotlight -->
+<section class="section" id="illustrious-alumni">
+  <div class="container">
+    <div class="section-head">
+      <h2>Alumni Spotlight</h2>
+      <a class="view-all" href="#/alumni-spotlight">View all</a>
+    </div>
+
+    <div class="cards-carousel" data-carousel="alumni">
+      <button class="cc-btn prev" aria-label="Previous alumni">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+
+      <div class="cc-viewport" role="region" aria-roledescription="carousel" aria-label="Alumni spotlight">
+        <!-- Keep 'grid cols-4' if you like; we’ll override to flex in CSS -->
+        <div class="grid cols-4 cc-track" id="alumniTrack">
+          <article class="card">
+            <div class="tile" style="margin:0 0 10px">
+              <img src="{% static 'app/assets/alumni_1.jpg' %}" alt="Alumnus portrait">
+            </div>
+            <h3>Alumnus A</h3>
+            <p class="muted">Global contribution in veterinary research.</p>
+          </article>
+
+          <article class="card">
+            <div class="tile" style="margin:0 0 10px">
+              <img src="{% static 'app/assets/alumni_2.jpg' %}" alt="Alumna portrait">
+            </div>
+            <h3>Alumna B</h3>
+            <p class="muted">Leading community outreach initiatives.</p>
+          </article>
+
+          <article class="card">
+            <div class="tile" style="margin:0 0 10px">
+              <img src="{% static 'app/assets/alumni_3.webp' %}" alt="Alumnus portrait">
+            </div>
+            <h3>Alumnus C</h3>
+            <p class="muted">Entrepreneurship in animal health.</p>
+          </article>
+
+          <article class="card">
+            <div class="tile" style="margin:0 0 10px">
+              <img src="{% static 'app/assets/alumni_4.jpg' %}" alt="Alumnus portrait">
+            </div>
+            <h3>Alumnus C</h3>
+            <p class="muted">Entrepreneurship in animal health.</p>
+          </article>
+
+          <!-- Add more alumni cards as needed -->
+        </div>
+      </div>
+
+      <button class="cc-btn next" aria-label="Next alumni">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m8.59 16.59 1.41 1.41L16 12 10 6 8.59 7.41 13.17 12z"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Reading resources -->
+<section class="section" id="reading-resources" style="background:var(--blue-100)">
+  <div class="container">
+    <div class="section-head">
+      <h2>Reading Resources</h2>
+      <a class="view-all" href="#/alumni-spotlight">Read more</a>
+    </div>
+    <div class="grid cols-3" style="margin-top:12px">
+      <article class="card">
+        <a href="#"><strong>Clinical Guides</strong>
+          <p class="muted">Protocols & SOPs</p>
+        </a>
+      </article>
+
+      <article class="card">
+        <a href="#"><strong>Research Papers</strong>
+          <p class="muted">Selected publications</p>
+        </a>
+      </article>
+
+      <article class="card">
+        <a href="#"><strong>Reference Notes</strong>
+          <p class="muted">Lecture notes & handbooks</p>
+        </a>
+      </article>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- MESSAGE FROM DIRECTOR -->
+<section class="section" id="director-message">
+  <div class="container">
+    <h2>MESSAGE FROM DIRECTOR</h2>
+    <div class="profile-grid" style="margin-top:12px">
+      <div class="profile-photo"><img src="{% static 'app/assets/director_image.jpg' %}"
+          alt="Director of Alumni, Dr. First Last"></div>
+      <article class="card">
+        <h3 class="profile-name">Dr. First Last</h3>
+        <p class="profile-qual">Ph.D., MVSc — Director, Alumni Relations</p>
+        <div class="profile-msg">
+          <p>Welcome to the KNPCVS Alumni community. Our graduates drive impact across clinical practice, research,
+            public service, and industry. Through alumni support we strengthen student welfare, expand
+            opportunities, and celebrate excellence. I invite you to engage with chapters, share your expertise, and
+            help us mentor the next generation.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE HUB: Farmer’s Corner + Clinical Case/Spot (merged) -->
+<section class="section" id="practice-hub" style="background:var(--blue-100)">
+  <div class="container">
+    <div class="section-head">
+      <h2>Farmer’s Corner & Clinical Spot</h2>
+      <!-- optional: <a class="view-all" href="#">View all</a> -->
+    </div>
+
+    <div class="grid cols-2" style="margin-top:12px">
+      <!-- Card 1: Farmer’s Corner -->
+      <article class="card bg-card" style="--card-bg: url({% static 'app/assets/farmers_corner_bg.jpg' %})">
+        <h3>Farmer’s Corner</h3>
+        <p class="muted">Seasonal care, nutrition, hygiene, and biosecurity tips.</p>
+      </article>
+
+      <!-- Card 2: Clinical Case / Spot -->
+      <article class="card bg-card" style="--card-bg: url({% static 'app/assets/clinical_spot_bg.jpg' %})">
+        <h3>Clinical Case / Spot</h3>
+        <p class="muted">Vignettes, imaging, and quick reads for discussion.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Photogallary -->
+<section class="section" id="photogallary" style="background:var(--blue-100)">
+  <div class="container">
+    <h2>PHOTOGALLARY</h2>
+
+    <div class="photo-magazine">
+      <div class="magazine-grid">
+        <!-- Big left -->
+        <figure class="item-a">
+          <img loading="lazy" src="assets/gallery-1.jpg" alt="Campus entrance">
+        </figure>
+
+        <!-- Middle top (wide) -->
+        <figure class="item-b">
+          <img loading="lazy" src="assets/gallery-2.jpg" alt="Central garden">
+        </figure>
+
+        <!-- Middle bottom (two small) -->
+        <div class="item-c">
+          <figure><img loading="lazy" src="assets/gallery-3.jpg" alt="Alumni statue"></figure>
+          <figure><img loading="lazy" src="assets/gallery-4.jpg" alt="Monument close-up"></figure>
+        </div>
+
+        <!-- Big right -->
+        <figure class="item-d">
+          <img loading="lazy" src="assets/gallery-5.jpg" alt="Academic block">
+        </figure>
+      </div>
+
+      <div class="actions">
+        <a class="btn-outline" href="#">View More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{% static 'app/js/script.js' %}"></script>
 {% endblock %}
