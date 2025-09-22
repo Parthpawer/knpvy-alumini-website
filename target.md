@@ -1,6 +1,4 @@
 # Home page
-    - Announcements and alumni section 
-        - crousal improvement
 
     - adding images and links
 

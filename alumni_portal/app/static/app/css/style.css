@@ -50,6 +50,39 @@ html,body{ margin:0; }
 .card h3{ margin:0 0 6px; color:var(--blue-900); font-size:1.05rem; line-height:1.3; }
 .card .muted{ color:var(--muted); }
 
+/* ===== Tinted section background (image + dark blue overlay) ===== */
+.section.tinted{
+  position: relative;
+  background: none;                /* ignore the old solid color */
+  isolation: isolate;              /* keep z-index local */
+}
+
+/* Paint the image */
+.section.tinted::before{
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--bg, none) center / cover no-repeat;
+  z-index: -2;                     /* behind everything */
+}
+
+/* Dark blue tint over the image (adjust alpha to taste) */
+.section.tinted::after{
+  content: "";
+  position: absolute; inset: 0;
+  background: rgba(9, 20, 42, 0.8);   /* ~ --blue-950 @ 60% */
+  z-index: -1;
+}
+
+/* Keep your content above the overlays */
+.section.tinted > *{ position: relative; z-index: 0; }
+
+/* Make section headings readable on the dark tint (cards keep their own styles) */
+.section.tinted > .container > h2,
+.section.tinted .section-head h2{ color:#fff; }
+.section.tinted .view-all{ color:#eaf2ff; }
+.section.tinted .view-all:hover{ text-decoration:underline; }
+
+
 /* ---------- Carousel ---------- */
 .carousel{
   position:relative;
