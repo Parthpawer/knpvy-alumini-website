@@ -296,78 +296,65 @@ html,body{ margin:0; }
   .card.bg-card:hover::before{ transform:scale(1.06); }
 }
 
-
-/* === Card Carousels (Announcements + Alumni) === */
+/* Base (unchanged for desktop) */
 .cards-carousel{
-  display:grid;
-  grid-template-columns:auto minmax(0,1fr) auto; /* [←] [viewport] [→] */
-  gap:12px;
-  align-items:center;
-  margin-top:12px;
+  --cc-gap: 12px;
+  --cc-per: 3;
+  --cc-offset: 0px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 12px;
 }
-
-/* Buttons sit beside the cards, not overlapping */
-.cc-btn{
-  width:44px; height:44px; border:0; border-radius:999px;
-  background:rgba(0,0,0,.5); color:#fff; display:grid; place-items:center; cursor:pointer;
-}
-.cc-btn:hover{ background:rgba(0,0,0,.65); }
-.cc-btn:focus-visible{ outline:3px solid #8ab6ff; outline-offset:2px; }
-.cc-btn[disabled]{ opacity:.45; cursor:default; }
-.cc-btn svg{ width:22px; height:22px; }
-
-.cc-viewport{
-  overflow:hidden; min-width:0; /* allow shrink */
-}
-
-/* Track uses flex; card width is 1/visible across breakpoints */
-.cc-track{
-  /* override any grid from existing theme */
+.cards-carousel .cc-viewport{ overflow:hidden; }
+.cards-carousel .cc-track{
   display:flex !important;
-  grid-template-columns:unset !important;
-
-  --cc-gap:12px;
-  --cc-visible:4; /* JS will update per breakpoint */
   gap:var(--cc-gap);
-  transition:transform .45s ease;
-  will-change:transform;
+  transform: translateX(calc(var(--cc-offset) * -1));
+  transition: transform .4s ease;
 }
-
-/* Each card fits exactly within the viewport width including inner gaps */
 .cards-carousel .cc-track > .card{
-  flex:0 0 calc((100% - (var(--cc-gap) * (var(--cc-visible) - 1))) / var(--cc-visible));
+  flex: 0 0 calc((100% - (var(--cc-gap) * (var(--cc-per) - 1))) / var(--cc-per));
+  min-width: 240px; /* desktop safety */
 }
 
-/* Small screens: optionally shrink buttons a touch */
+/* Buttons (desktop) */
+.cards-carousel .cc-btn{
+  width:44px; height:44px; border:0; border-radius:999px;
+  display:grid; place-items:center; cursor:pointer;
+  background:rgba(17,38,79,.85); color:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18);
+}
+.cards-carousel .cc-btn svg{ width:22px; height:22px; }
+
+/* Tablet: 2 cards */
+@media (max-width:1100px){
+  .cards-carousel{ --cc-per: 2; }
+}
+
+/* Phones: 1 card, smaller gap + buttons, and NO min-width */
 @media (max-width:640px){
-  .cc-btn{ width:40px; height:40px; }
+  .cards-carousel{ --cc-per: 1; column-gap: 10px; --cc-gap: 10px; }
+
+  /* smaller buttons */
+  .cards-carousel .cc-btn{ width:36px; height:36px; }
+  .cards-carousel .cc-btn svg{ width:20px; height:20px; }
+
+  /* allow card to shrink to viewport width so it never gets cut */
+  .cards-carousel .cc-track > .card{ min-width: 0; }
 }
 
-/* Smaller arrows on smaller screens (cards-carousel version) */
-@media (max-width: 999px){
-  .cards-carousel{ gap:10px; }
-  .cc-btn{ width:40px; height:40px; }
-  .cc-btn svg{ width:20px; height:20px; }
+/* Extra-small phones: squeeze a bit more */
+@media (max-width:380px){
+  .cards-carousel{ column-gap: 8px; --cc-gap: 8px; }
+  .cards-carousel .cc-btn{ width:28px; height:28px; }
+  .cards-carousel .cc-btn svg{ width:16px; height:16px; }
+  /* (Optional) if your global container has 24px padding, you can tighten just here:
+     .section .container { padding-inline:16px; }
+  */
 }
 
-@media (max-width: 640px){
-  .cards-carousel{ gap:8px; }
-  .cc-btn{ width:36px; height:36px; }
-  .cc-btn svg{ width:18px; height:18px; }
+/* Announcements: neutralize grid inside carousel so flex can size cards */
+#announcements .cards-carousel .announce{
+  display:flex !important; gap:var(--cc-gap); grid-template-columns:none; margin:0;
 }
-
-@media (max-width: 400px){
-  .cards-carousel{ gap:6px; }
-  .cc-btn{ width:32px; height:32px; }      /* keeps 32px minimum target */
-  .cc-btn svg{ width:16px; height:16px; }
-}
-
-/* Enable horizontal dragging without killing vertical scroll */
-.cc-viewport{ touch-action: pan-y; }
-
-/* Drag affordance + block text selection while dragging */
-.cc-track{ cursor: grab; }
-.cc-track.is-dragging{ cursor: grabbing; }
-body.no-select{ user-select: none; }
-
-/* (You already shrank arrows via media queries — keep those) */
+/* Alumni Spotlight: your .grid is overridden by .cc-track flex already */
