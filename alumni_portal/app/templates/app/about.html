@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'app/css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>About the Alumni Association</h1>
+      <p class="lead">Fostering lifelong connections among graduates, students, and the institute — and advancing our shared legacy.</p>
+      <div class="quicknav" aria-label="Quick navigation">
+        <a class="chip" href="#history">History</a>
+        <a class="chip" href="#mission">Mission & Vision</a>
+        <a class="chip" href="#milestones">Milestones</a>
+        <a class="chip" href="#governance">Executive Body</a>
+        <a class="chip" href="#bylaws">Bylaws</a>
+        <a class="chip" href="#legacy">Legacy & Impact</a>
+        <a class="chip" href="#contact">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <!-- Founding Story / History -->
+    <section id="history" class="section">
+      <div class="container">
+        <div class="hdr">
+          <div>
+            <h2>Our History</h2>
+            <p class="lead">From a small cohort of passionate graduates to a vibrant, global network.</p>
+          </div>
+        </div>
+        <div class="grid cols-2">
+          <article class="card">
+            <h3>Founding Story</h3>
+            <p class="muted">Established to strengthen the bond between alumni and the institute, the association began as a volunteer‑led initiative. Over the years, it has evolved into a structured body supporting student welfare, research, and community outreach.</p>
+            <blockquote>
+              <p><em>“Alma mater in our hearts, excellence in our actions.”</em></p>
+            </blockquote>
+          </article>
+          <article class="card">
+            <h3>What We Do</h3>
+            <p class="muted">We organize reunions and annual meets, fund scholarships and assistantships, power the placement cell with industry connects, and celebrate the achievements of our illustrious alumni across the globe.</p>
+            <div class="grid cols-2">
+              <span class="badge">Reunions</span>
+              <span class="badge">Scholarships</span>
+              <span class="badge">Mentorship</span>
+              <span class="badge">Outreach</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section id="mission" class="section alt">
+      <div class="container">
+        <div class="hdr">
+          <div>
+            <h2>Mission & Vision</h2>
+            <p class="lead">A clear purpose with long‑term commitment.</p>
+          </div>
+        </div>
+        <div class="grid cols-2">
+          <article class="card">
+            <h3>Mission</h3>
+            <p class="muted">To connect alumni, empower students, and contribute to institutional excellence through sustained engagement and support.</p>
+          </article>
+          <article class="card">
+            <h3>Vision</h3>
+            <p class="muted">To be a trusted partner in advancing education and societal impact by leveraging the collective strength of our alumni community.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Milestones Timeline -->
+    <section id="milestones" class="section">
+      <div class="container">
+        <div class="hdr">
+          <div>
+            <h2>Milestones</h2>
+            <p class="lead">Key moments that shaped our journey.</p>
+          </div>
+        </div>
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="timeline">
+              <div class="t-item">
+                <div class="t-title">1998 — Association Founded</div>
+                <div class="t-desc">An alumni‑led initiative takes formal shape with a governing body.</div>
+              </div>
+              <div class="t-item">
+                <div class="t-title">2005 — First Annual Alumni Meet</div>
+                <div class="t-desc">Cross‑batch networking, awards, and mentorship kickoff.</div>
+              </div>
+              <div class="t-item">
+                <div class="t-title">2012 — Scholarships Endowment</div>
+                <div class="t-desc">Creation of a fund supporting merit and need‑based scholarships.</div>
+              </div>
+              <div class="t-item">
+                <div class="t-title">2018 — Global Chapters</div>
+                <div class="t-desc">City chapters established to expand regional engagement.</div>
+              </div>
+              <div class="t-item">
+                <div class="t-title">2024 — Digital Alumni Directory</div>
+                <div class="t-desc">Launch of a secure platform to connect alumni and students.</div>
+              </div>
+            </div>
+          </div>
+          <div class="grid cols-1" style="gap:18px">
+            <article class="card">
+              <h3>Legacy Programs</h3>
+              <p class="muted">Scholarships, assistantships, student awards, and the placement cell are flagship programs sustained through alumni contributions.</p>
+            </article>
+            <article class="card">
+              <h3>Culture & Values</h3>
+              <p class="muted">Integrity, service, and excellence guide our initiatives and community engagement.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Legacy & Impact -->
+    <section id="legacy" class="section alt">
+      <div class="container">
+        <div class="hdr">
+          <div>
+            <h2>Legacy & Impact</h2>
+            <p class="lead">A tradition of excellence and community service.</p>
+          </div>
+        </div>
+        <div class="grid cols-3">
+          <article class="card stat"><h3>Scholarship Support</h3><p class="muted">Sustained funding for merit and need‑based aid.</p></article>
+          <article class="card stat"><h3>Mentorship</h3><p class="muted">Guidance for students through alumni expertise.</p></article>
+          <article class="card stat"><h3>Global Chapters</h3><p class="muted">Regional groups that keep our community connected.</p></article>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+
+{% block page_scripts %}
+{% endblock %}

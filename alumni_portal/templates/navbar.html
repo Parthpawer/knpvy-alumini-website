@@ -38,7 +38,7 @@
 
     <nav id="siteNav" class="site-nav" aria-label="Primary">
       <ul class="menu">
-        <li><a class="active" href="#">HOME</a></li>
+        <li><a class="" href="{% url 'home' %}">HOME</a></li>
 
         <!-- Single chevron; rotate it when open -->
         <li class="has-dropdown">
@@ -49,13 +49,13 @@
             </svg>
           </button>
           <ul class="dropdown" role="menu">
-            <li><a href="#history">History</a></li>
-            <li><a href="#governance">Executive Body</a></li>
+            <li><a href="{% url 'history' %}">History</a></li>
+            <li><a href="{% url 'executive-body' %}">Executive Body</a></li>
+            <li><a href="#governance">ByLaws</a></li>
           </ul>
         </li>
 
-
-        <li><a href="#events">EVENTS</a></li>
+        <li><a href="{% url 'events' %}">EVENTS</a></li>
         <li><a href="#activities">ACTIVITIES</a></li>
         <li><a href="#awards">AWARDS</a></li>
         <li><a href="#placement">PLACEMENT CELL</a></li>

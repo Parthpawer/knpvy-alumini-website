@@ -8,7 +8,7 @@
 
   let index = 0;
   let timer = null;
-  const INTERVAL = 5000; // 5 seconds
+  const INTERVAL = 4000; // 5 seconds
 
   function goTo(i){
     index = (i + slides.length) % slides.length;

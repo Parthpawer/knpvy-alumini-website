@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'app/css/executive_body.css' %}">
+{% endblock %}
+
+{% block content %}
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <!-- <div class="breadcrumbs"><a href="home.html">Home</a> • Executive Body</div> -->
+      <h1 style="margin-top:8px">Executive Body</h1>
+      <p class="lead">Elected representatives stewarding our mission — transparency, service, and impact.</p>
+      <div class="quicknav" aria-label="Quick navigation">
+        <a class="chip" href="#leadership">Leadership</a>
+        <a class="chip" href="#members">Members</a>
+        <a class="chip" href="#committees">Committees</a>
+        <a class="chip" href="#elections">Elections & Tenure</a>
+        <a class="chip" href="#bylaws">Bylaws</a>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <!-- Leadership -->
+    <section id="leadership" class="section">
+      <div class="container">
+        <div class="grid cols-2">
+          <div>
+            <h2>Leadership Team</h2>
+            <p class="lead">Core office bearers elected by the General Body to serve a fixed term.</p>
+            <div class="btnblock">
+              <a class="btn primary" href="#elections">View Election Rules</a>
+            </div>
+          </div>
+          <div class="card">
+            <strong>At a glance</strong>
+            <div class="grid cols-3" style="margin-top:10px">
+              <div><div class="badge">4</div><p class="muted" style="margin-top:6px">Office Bearers</p></div>
+              <div><div class="badge">8</div><p class="muted" style="margin-top:6px">Exec Members</p></div>
+              <div><div class="badge">6</div><p class="muted" style="margin-top:6px">Committees</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid auto min-260" style="margin-top:var(--space-2)">
+          <article class="card person" data-role="President" data-chapter="HQ">
+            <img class="avatar" src="assets/president.jpg" alt="President portrait" loading="lazy" sizes="(max-width:700px) 40vw, 132px">
+            <h3>Dr. A. President</h3>
+            <div class="role">President</div>
+            <div class="meta">Term: 2024–2026 • HQ</div>
+            <div class="btnblock">
+              <a class="btn" href="mailto:president@example.edu">Email</a>
+              <a class="btn" href="#">Profile</a>
+            </div>
+          </article>
+          <article class="card person" data-role="Chairman" data-chapter="HQ">
+            <img class="avatar" src="assets/chairman.jpg" alt="Chairman portrait" loading="lazy">
+            <h3>Dr. B. Chairman</h3>
+            <div class="role">Chairman</div>
+            <div class="meta">Term: 2024–2026 • HQ</div>
+            <div class="btnblock">
+              <a class="btn" href="mailto:chair@example.edu">Email</a>
+              <a class="btn" href="#">Profile</a>
+            </div>
+          </article>
+          <article class="card person" data-role="Secretary" data-chapter="HQ">
+            <img class="avatar" src="assets/secretary.jpg" alt="Secretary portrait" loading="lazy">
+            <h3>Dr. C. Secretary</h3>
+            <div class="role">Secretary</div>
+            <div class="meta">Term: 2024–2026 • HQ</div>
+            <div class="btnblock">
+              <a class="btn" href="mailto:secretary@example.edu">Email</a>
+              <a class="btn" href="#">Profile</a>
+            </div>
+          </article>
+          <article class="card person" data-role="Treasurer" data-chapter="HQ">
+            <img class="avatar" src="assets/treasurer.jpg" alt="Treasurer portrait" loading="lazy">
+            <h3>Dr. D. Treasurer</h3>
+            <div class="role">Treasurer</div>
+            <div class="meta">Term: 2024–2026 • HQ</div>
+            <div class="btnblock">
+              <a class="btn" href="mailto:treasurer@example.edu">Email</a>
+              <a class="btn" href="#">Profile</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Executive Members (role-only filter) -->
+    <section id="members" class="section" style="background:var(--blue-100)">
+      <div class="container">
+        <div class="grid auto min-320" style="align-items:end">
+          <div>
+            <h2>Executive Members</h2>
+            <p class="lead">Representing departments and chapters.</p>
+          </div>
+
+          <div class="card" role="region" aria-label="Filter members by role" style="display:grid; gap:10px; grid-template-columns:1fr auto">
+            <div class="muted" style="align-self:center"><strong>Filter:</strong> Role</div>
+            <select id="filterRole" class="select" aria-label="Filter by role">
+              <option value="">All roles</option>
+              <option>Member</option>
+              <option>Advisor</option>
+              <option>Chapter Lead</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="memberGrid" class="grid auto min-260" style="margin-top:var(--space-2)">
+          <article class="card person" data-role="Member" data-chapter="Pune" data-name="Member One">
+            <img class="avatar" src="assets/member1.jpg" alt="Member One portrait" loading="lazy">
+            <h3>Member One</h3><div class="role">Member</div><div class="meta">Pune Chapter</div><span class="pill">Mentorship</span>
+          </article>
+
+          <article class="card person" data-role="Member" data-chapter="Mumbai" data-name="Member Two">
+            <img class="avatar" src="assets/member2.jpg" alt="Member Two portrait" loading="lazy">
+            <h3>Member Two</h3><div class="role">Member</div><div class="meta">Mumbai Chapter</div><span class="pill">Research</span>
+          </article>
+
+          <article class="card person" data-role="Advisor" data-chapter="Global" data-name="Advisor One">
+            <img class="avatar" src="assets/member3.jpg" alt="Advisor One portrait" loading="lazy">
+            <h3>Advisor One</h3><div class="role">Advisor</div><div class="meta">Global Council</div><span class="pill">Strategy</span>
+          </article>
+
+          <article class="card person" data-role="Chapter Lead" data-chapter="Delhi" data-name="Lead Delhi">
+            <img class="avatar" src="assets/member4.jpg" alt="Lead Delhi portrait" loading="lazy">
+            <h3>Lead Delhi</h3><div class="role">Chapter Lead</div><div class="meta">Delhi Chapter</div><span class="pill">Outreach</span>
+          </article>
+
+          <article class="card person" data-role="Member" data-chapter="HQ" data-name="Member Three">
+            <img class="avatar" src="assets/member5.jpg" alt="Member Three portrait" loading="lazy">
+            <h3>Member Three</h3><div class="role">Member</div><div class="meta">HQ</div><span class="pill">Placements</span>
+          </article>
+
+          <article class="card person" data-role="Member" data-chapter="Pune" data-name="Member Four">
+            <img class="avatar" src="assets/member6.jpg" alt="Member Four portrait" loading="lazy">
+            <h3>Member Four</h3><div class="role">Member</div><div class="meta">Pune Chapter</div><span class="pill">Scholarships</span>
+          </article>
+
+          <article class="card person" data-role="Advisor" data-chapter="Mumbai" data-name="Advisor Two">
+            <img class="avatar" src="assets/member7.jpg" alt="Advisor Two portrait" loading="lazy">
+            <h3>Advisor Two</h3><div class="role">Advisor</div><div class="meta">Mumbai Council</div><span class="pill">Finance</span>
+          </article>
+
+          <article class="card person" data-role="Chapter Lead" data-chapter="Global" data-name="Lead Global">
+            <img class="avatar" src="assets/member8.jpg" alt="Lead Global portrait" loading="lazy">
+            <h3>Lead Global</h3><div class="role">Chapter Lead</div><div class="meta">Global Chapter</div><span class="pill">Alumni Relations</span>
+          </article>
+        </div>
+
+        <p id="noResults" class="muted" style="display:none; margin-top:10px">No members match your role filter.</p>
+      </div>
+    </section>
+
+    <!-- Committees -->
+    <section id="committees" class="section">
+      <div class="container">
+        <h2>Standing Committees</h2>
+        <p class="lead">Focused teams overseeing key pillars.</p>
+
+        <details class="card">
+          <summary>Scholarships & Student Support</summary>
+          <div class="grid auto min-220" style="margin-top:10px">
+            <div><strong>Chair:</strong> Dr. C. Secretary</div>
+            <div><strong>Members:</strong> Member Four, Member One, Advisor One</div>
+            <div><strong>Focus:</strong> Merit/need-based aid, assistantships</div>
+          </div>
+        </details>
+
+        <details class="card">
+          <summary>Mentorship & Careers</summary>
+          <div class="grid auto min-220" style="margin-top:10px">
+            <div><strong>Chair:</strong> Lead Global</div>
+            <div><strong>Members:</strong> Member One, Member Two</div>
+            <div><strong>Focus:</strong> Alumni talks, mentorship, placement cell</div>
+          </div>
+        </details>
+
+        <details class="card">
+          <summary>Finance & Audit</summary>
+          <div class="grid auto min-220" style="margin-top:10px">
+            <div><strong>Chair:</strong> Dr. D. Treasurer</div>
+            <div><strong>Members:</strong> Advisor Two, Member Three</div>
+            <div><strong>Focus:</strong> Budgets, audits, compliance</div>
+          </div>
+        </details>
+
+        <details class="card">
+          <summary>Events & Reunions</summary>
+          <div class="grid auto min-220" style="margin-top:10px">
+            <div><strong>Chair:</strong> Dr. B. Chairman</div>
+            <div><strong>Members:</strong> Chapter Leads</div>
+            <div><strong>Focus:</strong> Annual alumni meet, chapter meets</div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+
+    <!-- Elections & tenure -->
+    <section id="elections" class="section" style="background:var(--blue-100)">
+      <div class="container">
+        <h2>Elections & Tenure</h2>
+        <p class="lead">How leadership is elected and terms are defined.</p>
+        <div class="grid auto min-320">
+          <div class="card">
+            <strong>Key Policies</strong>
+            <ul class="muted" style="margin:10px 0 0; padding-left:18px">
+              <li>Term length: <strong>2 years</strong></li>
+              <li>Eligibility: Life/regular members in good standing</li>
+              <li>Voting: One member, one vote (secure ballot)</li>
+              <li>Vacancy: Interim appointment until by-election</li>
+            </ul>
+            <div class="btnblock">
+              <a class="btn primary" href="#bylaws">Read Bylaws</a>
+              <a class="btn" href="#">Nomination Form</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="timeline">
+              <div class="t-item"><div><strong>Jan 2024</strong> — Election notice issued</div></div>
+              <div class="t-item"><div><strong>Feb 2024</strong> — Nominations & scrutiny</div></div>
+              <div class="t-item"><div><strong>Mar 2024</strong> — Voting window</div></div>
+              <div class="t-item"><div><strong>Apr 2024</strong> — Results & onboarding</div></div>
+              <div class="t-item"><div><strong>2024–26</strong> — Current tenure</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Governance docs -->
+    <section id="bylaws" class="section">
+      <div class="container">
+        <h2>Bylaws & Governance</h2>
+        <div class="grid auto min-320" style="margin-top:12px">
+          <article class="card">
+            <h3>Bylaws (Constitution)</h3>
+            <p class="muted">Membership, meetings, elections, finance, amendments.</p>
+            <div class="btnblock">
+              <a class="btn primary" href="#">Download Bylaws (PDF)</a>
+              <a class="btn" href="#">View Summary</a>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Nomination & Code of Conduct</h3>
+            <p class="muted">Transparent nominations and ethical standards.</p>
+            <div class="btnblock">
+              <a class="btn" href="#">Nomination Form</a>
+              <a class="btn" href="#">Conflict of Interest</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{% static 'app/js/executive_body.js' %}"></script>
+{% endblock %}

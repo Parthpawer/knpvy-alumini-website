@@ -1,0 +1,238 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'app/css/events.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="page-hero">
+        <div class="container">
+            <h1 style="margin-top:8px">Events — Agenda View</h1>
+            <p class="lead">Plan with ease. Browse by month, filter by type, and add to your calendar in one click.</p>
+            <div class="quicknav" aria-label="Quick navigation">
+                <span id="quicknavMonths" style="display:contents"></span>
+                <a class="chip" href="#host">Host an Event</a>
+            </div>
+        </div>
+    </section>
+
+    <main id="main" class="section">
+        <div class="container grid cols-2">
+            <aside class="sidebar">
+                <div class="card filters" role="region" aria-label="Filter events">
+                    <h3 style="margin-bottom:6px">Filters</h3>
+                    <select id="fType" class="select" aria-label="Filter by type">
+                        <option value="">All types</option>
+                        <option>Meet</option>
+                        <option>Talk</option>
+                        <option>Workshop</option>
+                        <option>Panel</option>
+                    </select>
+                    <select id="fChapter" class="select" aria-label="Filter by chapter">
+                        <option value="">All chapters</option>
+                        <option>Campus</option>
+                        <option>Pune</option>
+                        <option>Mumbai</option>
+                        <option>Delhi</option>
+                        <option>Global</option>
+                    </select>
+                    <div class="switch" aria-label="Quick date ranges">
+                        <button class="chip" data-when="">All Dates</button>
+                        <button class="chip" data-when="30">Next 30 Days</button>
+                        <button class="chip" data-when="90">Next 90 Days</button>
+                        <button class="chip" data-when="virtual">Virtual Only</button>
+                    </div>
+                    <button id="reset" class="btn" style="margin-top:2px">Reset</button>
+                </div>
+
+                <div class="month-rail card" aria-label="Jump to month">
+                    <div class="rail-chips" id="railChips"><!-- built by JS --></div>
+                </div>
+            </aside>
+
+            <section id="agenda">
+                <!-- Month blocks with data-month (YYYY-MM). These are auto-hidden when empty. -->
+                <div id="m-2025-10" class="anchor month-block" data-month="2025-10">
+                    <div class="month-head">
+                        <h2>October 2025</h2><span class="badge">2 events</span>
+                    </div>
+
+                    <article class="event-row" data-type="Workshop" data-chapter="Pune" data-mode="In-person"
+                        data-start="2025-10-19T09:30:00+05:30" data-end="2025-10-19T13:00:00+05:30"
+                        data-title="Clinical Skills Workshop: Bovine Medicine" data-location="Pune Veterinary Clinic">
+                        <div class="datebadge">
+                            <div>
+                                <div class="mo">OCT</div>
+                                <div class="dy">19</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="ribbon">Workshop • Pune</span>
+                            <h3 class="event-title">Clinical Skills Workshop: Bovine Medicine</h3>
+                            <div class="event-meta">Sun, 19 Oct · 09:30–13:00 <span class="sep">•</span> In-person <span
+                                    class="sep">•</span> Pune Veterinary Clinic</div>
+                            <div class="cover"><img src="assets/event-2.jpg" alt="Workshop cover" loading="lazy"
+                                    sizes="(max-width:560px) 100vw, 800px"></div>
+                            <div class="actions">
+                                <a class="btn primary" href="#">RSVP</a>
+                                <button class="btn addCal">Add to Calendar</button>
+                                <a class="btn ghost" href="#">Details</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="event-row" data-type="Meet" data-chapter="Global" data-mode="Virtual"
+                        data-start="2025-10-05T17:00:00+05:30" data-end="2025-10-05T19:00:00+05:30"
+                        data-title="Global Virtual Meetup" data-location="Online (Zoom)">
+                        <div class="datebadge">
+                            <div>
+                                <div class="mo">OCT</div>
+                                <div class="dy">05</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="ribbon">Meet • Global (Virtual)</span>
+                            <h3 class="event-title">Global Virtual Meetup</h3>
+                            <div class="event-meta">Sun, 5 Oct · 17:00–19:00 <span class="sep">•</span> Virtual <span
+                                    class="sep">•</span> Zoom</div>
+                            <div class="actions">
+                                <a class="btn primary" href="#">RSVP</a>
+                                <button class="btn addCal">Add to Calendar</button>
+                                <a class="btn ghost" href="#">Details</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div id="m-2025-11" class="anchor month-block" data-month="2025-11">
+                    <div class="month-head">
+                        <h2>November 2025</h2><span class="badge">1 event</span>
+                    </div>
+
+                    <article class="event-row" data-type="Talk" data-chapter="Mumbai" data-mode="In-person"
+                        data-start="2025-11-15T18:30:00+05:30" data-end="2025-11-15T20:00:00+05:30"
+                        data-title="Alumni Talk: Innovations in Animal Health" data-location="Mumbai Chapter Hall">
+                        <div class="datebadge">
+                            <div>
+                                <div class="mo">NOV</div>
+                                <div class="dy">15</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="ribbon">Talk • Mumbai</span>
+                            <h3 class="event-title">Alumni Talk: Innovations in Animal Health</h3>
+                            <div class="event-meta">Sat, 15 Nov · 18:30–20:00 <span class="sep">•</span> In-person <span
+                                    class="sep">•</span> Mumbai Chapter Hall</div>
+                            <div class="cover"><img src="assets/event-3.jpg" alt="Talk cover" loading="lazy"
+                                    sizes="(max-width:560px) 100vw, 800px"></div>
+                            <div class="actions">
+                                <a class="btn primary" href="#">RSVP</a>
+                                <button class="btn addCal">Add to Calendar</button>
+                                <a class="btn ghost" href="#">Details</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div id="m-2025-12" class="anchor month-block" data-month="2025-12">
+                    <div class="month-head">
+                        <h2>December 2025</h2><span class="badge">1 event</span>
+                    </div>
+
+                    <article class="event-row" data-type="Meet" data-chapter="Campus" data-mode="In-person"
+                        data-start="2025-12-07T10:00:00+05:30" data-end="2025-12-07T17:00:00+05:30"
+                        data-title="Annual Alumni Meet 2025" data-location="KNPCVS Campus, Shirwal">
+                        <div class="datebadge">
+                            <div>
+                                <div class="mo">DEC</div>
+                                <div class="dy">07</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="ribbon">Meet • Campus</span>
+                            <h3 class="event-title">Annual Alumni Meet 2025</h3>
+                            <div class="event-meta">Sun, 7 Dec · 10:00–17:00 <span class="sep">•</span> In-person <span
+                                    class="sep">•</span> KNPCVS Campus, Shirwal</div>
+                            <div class="cover"><img src="assets/event-1.jpg" alt="Annual Meet cover" loading="lazy"
+                                    sizes="(max-width:560px) 100vw, 800px"></div>
+                            <div class="actions">
+                                <a class="btn primary" href="#">RSVP</a>
+                                <button class="btn addCal">Add to Calendar</button>
+                                <a class="btn ghost" href="#">Details</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Recent Past (hidden if empty, not included in month rail) -->
+                <div class="month-block" id="past">
+                    <div class="month-head">
+                        <h2>Recent Past</h2><span class="badge">2</span>
+                    </div>
+
+                    <article class="event-row" data-type="Meet" data-chapter="Campus" data-mode="In-person"
+                        data-start="2025-08-10T10:00:00+05:30" data-end="2025-08-10T16:00:00+05:30"
+                        data-title="Orientation & Alumni Mixer" data-location="Campus Auditorium">
+                        <div class="datebadge">
+                            <div>
+                                <div class="mo">AUG</div>
+                                <div class="dy">10</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="ribbon">Meet • Campus</span>
+                            <h3 class="event-title">Orientation & Alumni Mixer</h3>
+                            <div class="event-meta">Sun, 10 Aug · 10:00–16:00 <span class="sep">•</span> In-person <span
+                                    class="sep">•</span> Campus Auditorium</div>
+                            <div class="actions"><a class="btn ghost" href="#">Photos</a><a class="btn"
+                                    href="#">Summary</a></div>
+                        </div>
+                    </article>
+
+                    <article class="event-row" data-type="Talk" data-chapter="Delhi" data-mode="In-person"
+                        data-start="2025-07-22T18:00:00+05:30" data-end="2025-07-22T19:30:00+05:30"
+                        data-title="Career Talk: Public Health Pathways" data-location="Delhi Chapter Center">
+                        <div class="datebadge">
+                            <div>
+                                <div class="mo">JUL</div>
+                                <div class="dy">22</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="ribbon">Talk • Delhi</span>
+                            <h3 class="event-title">Career Talk: Public Health Pathways</h3>
+                            <div class="event-meta">Tue, 22 Jul · 18:00–19:30 <span class="sep">•</span> In-person <span
+                                    class="sep">•</span> Delhi Chapter Center</div>
+                            <div class="actions"><a class="btn ghost" href="#">Slides</a><a class="btn"
+                                    href="#">Recap</a></div>
+                        </div>
+                    </article>
+                </div>
+
+                <p id="noEvents" class="muted" style="display:none; margin-top:10px">No events match your filters.</p>
+
+                <div id="host" class="month-block">
+                    <article class="card">
+                        <h2>Host an Event</h2>
+                        <p class="lead">Plan a chapter meetup, panel, or hands-on workshop — we’ll help with templates
+                            and promotion.</p>
+                        <ul class="muted" style="margin:8px 0 0; padding-left:18px">
+                            <li>Choose format: Meet / Talk / Workshop / Panel</li>
+                            <li>Provide venue / virtual link and dates</li>
+                            <li>We support registration & outreach</li>
+                        </ul>
+                        <div class="actions" style="margin-top:10px">
+                            <a class="btn primary" href="#">Propose an Event</a>
+                            <a class="btn" href="#">Download Event Kit</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{% static 'app/js/events.js' %}"></script>
+{% endblock %}
