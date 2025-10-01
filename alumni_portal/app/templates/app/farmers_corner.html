@@ -1,0 +1,316 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'app/css/farmers_corner.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="breadcrumbs"><a href="home.html">Home</a> • Farmer’s Corner</div>
+      <h1 style="margin-top:8px">Farmer’s Corner</h1>
+      <p class="lead">Practical, farmer-friendly guidance curated by KNPCVS alumni. Consult a qualified veterinarian for medical decisions.</p>
+    </div>
+  </section>
+
+  <!-- Advisory strip -->
+  <section class="section" aria-labelledby="adv-title">
+    <div class="container">
+      <div class="section-hdr">
+        <div class="eyebrow" aria-hidden="true">Now</div>
+        <h2 id="adv-title" style="margin:0">Advisory Strip</h2>
+        <p class="lead" style="margin-left:auto">Seasonal & quick alerts</p>
+      </div>
+      <div class="advisories" style="margin-top:12px">
+        <div class="advisory"><span class="ico">🌧️</span><span>Monsoon hygiene for dairy sheds</span></div>
+        <div class="advisory"><span class="ico">🔥</span><span>Heat-stress watch: shade + water</span></div>
+        <div class="advisory"><span class="ico">🐔</span><span>Poultry biosecurity: visitor log & footbaths</span></div>
+        <div class="advisory"><span class="ico">💉</span><span>Vaccination camps — contact local vet</span></div>
+        <div class="advisory"><span class="ico">🧪</span><span>Mastitis CMT screening reminder</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Access -->
+  <section class="section" aria-labelledby="qa-title">
+    <div class="container">
+      <div class="section-hdr">
+        <div class="eyebrow" aria-hidden="true">Utilities</div>
+        <h2 id="qa-title" style="margin:0">Quick Access</h2>
+        <p class="lead" style="margin-left:auto">Frequently used farmer resources</p>
+      </div>
+      <div class="qa-grid" style="margin-top:12px">
+        <a class="card qa-card" href="#"><strong>Emergency Contacts Card</strong><p class="muted">Nearest vet, ambulance, labs</p></a>
+        <a class="card qa-card" href="#"><strong>Vaccination Calendar (PDF)</strong><p class="muted">Common species schedules</p></a>
+        <a class="card qa-card" href="#"><strong>Subsidy & Schemes</strong><p class="muted">Govt programs & eligibility</p></a>
+        <a class="card qa-card" href="#"><strong>Milk Hygiene Poster</strong><p class="muted">Milking & storage do’s/don’ts</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seasonal Spotlight -->
+  <section class="section" aria-labelledby="spotlight-title" style="background:var(--blue-100)">
+    <div class="container">
+      <div class="section-hdr">
+        <div class="eyebrow" aria-hidden="true">Seasonal</div>
+        <h2 id="spotlight-title" style="margin:0">Spotlight Tips</h2>
+        <p class="lead" style="margin-left:auto">Focused advice for current conditions</p>
+      </div>
+      <div class="spot-grid" style="margin-top:12px">
+        <article class="card spot-card">
+          <h3>Monsoon Mastitis Prevention</h3>
+          <ul class="muted">
+            <li>Dry bedding; clean stalls twice daily</li>
+            <li>Teat-dip pre/post milking (per vet)</li>
+            <li>Isolate sick/freshly calved animals</li>
+          </ul>
+          <div class="btn" style="margin-top:10px">Hygiene Checklist (PDF)</div>
+        </article>
+        <article class="card spot-card">
+          <h3>Heat Stress (Cattle/Buffalo)</h3>
+          <ul class="muted">
+            <li>Shade and ventilation</li>
+            <li>Cool, clean water at all times</li>
+            <li>Electrolytes as advised</li>
+          </ul>
+          <div class="btn" style="margin-top:10px">Heat-Stress Tips (PDF)</div>
+        </article>
+        <article class="card spot-card">
+          <h3>Poultry Biosecurity Basics</h3>
+          <ul class="muted">
+            <li>Footbaths & visitor control</li>
+            <li>All-in/all-out flocking</li>
+            <li>Quarantine new birds</li>
+          </ul>
+          <div class="btn" style="margin-top:10px">Biosecurity Sheet (PDF)</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Playbooks -->
+  <section class="section" aria-labelledby="play-title">
+    <div class="container">
+      <div class="section-hdr">
+        <div class="eyebrow" aria-hidden="true">Featured</div>
+        <h2 id="play-title" style="margin:0">Rapid Response Playbooks</h2>
+        <p class="lead" style="margin-left:auto">Step-by-step, farmer-ready</p>
+      </div>
+      <div class="play-grid" style="margin-top:12px">
+        <article class="card play">
+          <h3>Outbreak Triage (All Species)</h3>
+          <ol class="steps muted">
+            <li>Isolate suspect animals immediately</li>
+            <li>Call veterinarian; record symptoms</li>
+            <li>Restrict movement; disinfect routes</li>
+          </ol>
+          <div class="btn" style="margin-top:10px">Download (PDF)</div>
+        </article>
+        <article class="card play">
+          <h3>Calving/Kidding Readiness</h3>
+          <ol class="steps muted">
+            <li>Clean, dry, calm pen prepared</li>
+            <li>Colostrum plan & clean bottles</li>
+            <li>Kit ready: gloves, iodine, towels</li>
+          </ol>
+          <div class="btn" style="margin-top:10px">Checklist (PDF)</div>
+        </article>
+        <article class="card play">
+          <h3>Safe Chemical Handling</h3>
+          <ol class="steps muted">
+            <li>Label + lock store; PPE mandatory</li>
+            <li>Mix as per label; never guess dosage</li>
+            <li>Dispose containers responsibly</li>
+          </ol>
+          <div class="btn" style="margin-top:10px">Poster (PDF)</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Knowledge Library -->
+  <main class="section" aria-labelledby="lib-title">
+    <div class="container">
+      <div class="section-hdr">
+        <div class="eyebrow" aria-hidden="true">Library</div>
+        <h2 id="lib-title" style="margin:0">Guides & Notes</h2>
+        <p class="lead" style="margin-left:auto">Search and filter farmer-ready guides</p>
+      </div>
+
+      <!-- Sticky Toolbar -->
+      <div class="toolbar" role="region" aria-label="Filter and search">
+        <div class="toolbar-row" style="margin-bottom:8px">
+          <input id="q" type="search" placeholder="Search title or keywords…" aria-label="Search guides" />
+          <button class="btn" id="reset" type="button">Reset</button>
+          <div class="badge" id="count" aria-live="polite">0 results</div>
+        </div>
+        <div class="toolbar-row">
+          <strong class="muted" style="min-width:72px">Species</strong>
+          <div class="chips" id="speciesChips" role="tablist" aria-label="Filter by species"></div>
+        </div>
+        <div class="toolbar-row" style="margin-top:6px">
+          <strong class="muted" style="min-width:72px">Topic</strong>
+          <div class="chips" id="topicChips" role="tablist" aria-label="Filter by topic"></div>
+        </div>
+      </div>
+
+      <!-- Library grid -->
+      <div id="library" class="grid library" style="margin-top:var(--s4)">
+        <!-- Text-first guide cards (no images) -->
+        <article class="card guide"
+                 data-title="Dairy Cleanliness Checklist"
+                 data-species="cattle"
+                 data-topic="housing"
+                 data-keywords="hygiene mastitis bedding sanitation">
+          <div class="meta"><span class="pill">Cattle</span><span class="pill">Housing</span></div>
+          <h3>Dairy Cleanliness Checklist</h3>
+          <p class="muted">Daily and weekly tasks to keep stalls dry and udders clean.</p>
+          <div class="btn">Download PDF</div>
+        </article>
+
+        <article class="card guide"
+                 data-title="Balanced Ration Basics (Goat/Sheep)"
+                 data-species="goat-sheep"
+                 data-topic="nutrition"
+                 data-keywords="feed ration fodder urea-molasses block">
+          <div class="meta"><span class="pill">Goat/Sheep</span><span class="pill">Nutrition</span></div>
+          <h3>Balanced Ration Basics (Goat/Sheep)</h3>
+          <p class="muted">Key points on roughage, concentrates, and clean water access.</p>
+          <div class="btn">Download PDF</div>
+        </article>
+
+        <article class="card guide
+        "
+                 data-title="Backyard Poultry Starter Guide"
+                 data-species="poultry"
+                 data-topic="biosecurity"
+                 data-keywords="vaccination brooding litter biosecurity">
+          <div class="meta"><span class="pill">Poultry</span><span class="pill">Biosecurity</span></div>
+          <h3>Backyard Poultry Starter Guide</h3>
+          <p class="muted">Brooding, litter management, and basic disease prevention.</p>
+          <div class="btn">Download PDF</div>
+        </article>
+
+        <article class="card guide"
+                 data-title="Heat Stress: Practical Checklist"
+                 data-species="cattle"
+                 data-topic="health"
+                 data-keywords="heat stress shade water cooling">
+          <div class="meta"><span class="pill">Cattle</span><span class="pill">Health</span></div>
+          <h3>Heat Stress: Practical Checklist</h3>
+          <p class="muted">Low-cost measures to reduce heat load and maintain intake.</p>
+          <div class="btn">Download PDF</div>
+        </article>
+
+        <article class="card guide"
+                 data-title="Buffalo Shed Ventilation Tips"
+                 data-species="buffalo"
+                 data-topic="housing"
+                 data-keywords="ventilation shed design humidity">
+          <div class="meta"><span class="pill">Buffalo</span><span class="pill">Housing</span></div>
+          <h3>Buffalo Shed Ventilation Tips</h3>
+          <p class="muted">Airflow, shade planning, and moisture control for sheds.</p>
+          <div class="btn">Download PDF</div>
+        </article>
+
+        <article class="card guide"
+                 data-title="Kidding/Lambing Preparations"
+                 data-species="goat-sheep"
+                 data-topic="reproduction"
+                 data-keywords="parturition colostrum pen hygiene">
+          <div class="meta"><span class="pill">Goat/Sheep</span><span class="pill">Reproduction</span></div>
+          <h3>Kidding/Lambing Preparations</h3>
+          <p class="muted">Clean pens, colostrum readiness, and basic newborn care.</p>
+          <div class="btn">Download PDF</div>
+        </article>
+      </div>
+
+      <p id="noResults" class="muted" style="display:none; margin-top:10px">No guides match your filters.</p>
+      <p class="muted" style="margin-top:10px; font-size:.9rem"><strong>Note:</strong> These are general guides for awareness. Always consult a qualified veterinarian before making health, treatment, or dosing decisions.</p>
+    </div>
+  </main>
+
+  <!-- Vaccination Calendar (responsive tables) -->
+  <section class="section" aria-labelledby="vac-title" style="background:var(--blue-100)">
+    <div class="container">
+      <div class="section-hdr">
+        <div class="eyebrow" aria-hidden="true">Planning</div>
+        <h2 id="vac-title" style="margin:0">Vaccination Calendar (Essentials)</h2>
+        <p class="lead" style="margin-left:auto">Consult your veterinarian for local schedules</p>
+      </div>
+
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); margin-top:12px">
+        <div class="card">
+          <h3>Cattle/Buffalo</h3>
+          <table class="table" aria-label="Cattle and Buffalo vaccination calendar">
+            <thead class="thead">
+              <tr><th>Age/Time</th><th>Disease</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td data-label="Age/Time">3–4 months</td><td data-label="Disease">FMD (1st)</td><td data-label="Notes">As per state program</td></tr>
+              <tr><td data-label="Age/Time">6 months</td><td data-label="Disease">HS</td><td data-label="Notes">Annual booster</td></tr>
+              <tr><td data-label="Age/Time">Yearly</td><td data-label="Disease">BQV/BR</td><td data-label="Notes">As advised by vet</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>Goat/Sheep</h3>
+          <table class="table" aria-label="Goat and Sheep vaccination calendar">
+            <thead class="thead">
+              <tr><th>Age/Time</th><th>Disease</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td data-label="Age/Time">3 months</td><td data-label="Disease">PPR (1st)</td><td data-label="Notes">Booster as advised</td></tr>
+              <tr><td data-label="Age/Time">6 months</td><td data-label="Disease">ET</td><td data-label="Notes">Annual or risk-based</td></tr>
+              <tr><td data-label="Age/Time">Breeding</td><td data-label="Disease">Brucellosis (F)</td><td data-label="Notes">Vet guidance mandatory</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>Poultry</h3>
+          <table class="table" aria-label="Poultry vaccination calendar">
+            <thead class="thead">
+              <tr><th>Age/Time</th><th>Disease</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td data-label="Age/Time">Day 1–7</td><td data-label="Disease">Marek/ND</td><td data-label="Notes">Hatchery schedule</td></tr>
+              <tr><td data-label="Age/Time">3–4 weeks</td><td data-label="Disease">IB/ND</td><td data-label="Notes">Booster per program</td></tr>
+              <tr><td data-label="Age/Time">Layer cycle</td><td data-label="Disease">IBD / ILT</td><td data-label="Notes">Vet-supervised</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:10px; font-size:.9rem">This calendar is indicative. Follow regional disease-control programs and veterinary advice.</p>
+    </div>
+  </section>
+
+  <!-- Downloads -->
+  <section class="section" aria-labelledby="dl-title">
+    <div class="container">
+      <div class="section-hdr">
+        <div class="eyebrow" aria-hidden="true">Downloads</div>
+        <h2 id="dl-title" style="margin:0">Checklists & Forms</h2>
+        <p class="lead" style="margin-left:auto">Ready-to-print farmer resources</p>
+      </div>
+
+      <div class="dl-grid" style="margin-top:12px">
+        <a class="card" href="#"><strong>Daily Dairy Hygiene Checklist (PDF)</strong><p class="muted">Stall care, udder hygiene, water</p></a>
+        <a class="card" href="#"><strong>Backyard Poultry Biosecurity (PDF)</strong><p class="muted">Footbaths, visitors, litter</p></a>
+        <a class="card" href="#"><strong>Goat/Sheep Pre-Kidding Prep (PDF)</strong><p class="muted">Pens, supplies, newborn care</p></a>
+        <a class="card" href="#"><strong>Emergency Contacts Card (PDF)</strong><p class="muted">Nearest vet, ambulance, labs</p></a>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}
+
+{% block page_scripts %}
+<script src="{% static 'app/js/farmers_corner.js' %}"></script>
+{% endblock %}

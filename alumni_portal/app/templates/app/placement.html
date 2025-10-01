@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'app/css/placement.css' %}">
+{% endblock %}
+
+{% block content %}
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="breadcrumbs"><a href="home.html">Home</a> • Placements</div>
+        <h1 style="margin-top:8px">Placements & Careers</h1>
+        <p class="lead">Opportunities across clinical practice, industry, research, and public health — backed by strong recruiter relationships.</p>
+        <div class="quicknav" aria-label="Quick navigation">
+          <a class="chip" href="#snapshot">Snapshot</a>
+          <a class="chip" href="#partners">Recruiting Partners</a>
+          <a class="chip" href="#tracks">Tracks</a>
+          <a class="chip" href="#outcomes">Outcomes</a>
+          <a class="chip" href="#stories">Success Stories</a>
+          <a class="chip" href="#downloads">Downloads</a>
+          <a class="chip" href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <!-- Snapshot / KPIs -->
+    <section id="snapshot" class="section bg-tint-2 divided anchor">
+      <div class="container">
+        <h2>Snapshot (2025)</h2>
+        <div class="kpi">
+          <div class="item"><strong>95%</strong><span>Placement Rate</span></div>
+          <div class="item"><strong>₹18 LPA</strong><span>Highest CTC</span></div>
+          <div class="item"><strong>₹7.2 LPA</strong><span>Median CTC</span></div>
+          <div class="item"><strong>160+</strong><span>Offers Made</span></div>
+          <div class="item"><strong>80+</strong><span>Recruiters</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recruiting Partners (logo slider) -->
+    <section id="partners" class="section bg-tint-1 divided anchor">
+      <div class="container">
+        <h2>Recruiting Partners</h2>
+        <p class="muted">A few of the organisations that hire from us.</p>
+
+        <div class="logo-slider" data-slider="logos" data-auto="true" data-interval="2800">
+          <div class="slider-viewport">
+            <div class="slider-track">
+              <div class="logo-slide"><div class="logo-tile"><img src="assets/logo1.png" alt="Partner logo 1" loading="lazy"></div></div>
+              <div class="logo-slide"><div class="logo-tile"><img src="assets/logo2.png" alt="Partner logo 2" loading="lazy"></div></div>
+              <div class="logo-slide"><div class="logo-tile"><img src="assets/logo3.png" alt="Partner logo 3" loading="lazy"></div></div>
+              <div class="logo-slide"><div class="logo-tile"><img src="assets/logo4.png" alt="Partner logo 4" loading="lazy"></div></div>
+              <div class="logo-slide"><div class="logo-tile"><img src="assets/logo5.png" alt="Partner logo 5" loading="lazy"></div></div>
+              <div class="logo-slide"><div class="logo-tile"><img src="assets/logo6.png" alt="Partner logo 6" loading="lazy"></div></div>
+              <div class="logo-slide"><div class="logo-tile"><img src="assets/logo7.png" alt="Partner logo 7" loading="lazy"></div></div>
+              <div class="logo-slide"><div class="logo-tile"><img src="assets/logo8.png" alt="Partner logo 8" loading="lazy"></div></div>
+            </div>
+          </div>
+          <div class="arrows">
+            <button type="button" data-prev aria-label="Previous">‹</button>
+            <button type="button" data-next aria-label="Next">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tracks (different layout) -->
+    <section id="tracks" class="section bg-gradient-soft divided anchor">
+      <div class="container">
+        <h2>Career Tracks</h2>
+        <div class="auto min-300" style="margin-top:12px">
+          <article class="card track"><div class="icon" aria-hidden="true"></div><div><h3>Clinical Practice</h3><p class="muted">Companion & large animal care, surgery & anaesthesia.</p><ul class="muted"><li>Associate Veterinarian</li><li>Junior Veterinary Officer</li><li>Clinic Manager</li></ul></div></article>
+          <article class="card track"><div class="icon" aria-hidden="true"></div><div><h3>Research & Labs</h3><p class="muted">Diagnostics, wet labs, and translational research.</p><ul class="muted"><li>Research Assistant</li><li>Lab Technologist</li><li>Quality Analyst</li></ul></div></article>
+          <article class="card track"><div class="icon" aria-hidden="true"></div><div><h3>Industry</h3><p class="muted">Pharma, vaccines, feed, and animal health devices.</p><ul class="muted"><li>Technical Sales</li><li>Field Vet (Tech)</li><li>Product Specialist</li></ul></div></article>
+          <article class="card track"><div class="icon" aria-hidden="true"></div><div><h3>Public Health</h3><p class="muted">Epidemiology, food safety, and zoonoses.</p><ul class="muted"><li>Surveillance Vet</li><li>Public Health Officer</li><li>Program Coordinator</li></ul></div></article>
+          <article class="card track"><div class="icon" aria-hidden="true"></div><div><h3>Agri‑tech & Startups</h3><p class="muted">Precision dairy, poultry tech, entrepreneurship.</p><ul class="muted"><li>Operations Associate</li><li>Implementation Vet</li><li>Founder/Co‑founder</li></ul></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcomes -->
+    <section id="outcomes" class="section bg-tint-2 divided anchor">
+      <div class="container">
+        <h2>Outcomes & Highlights</h2>
+        <div class="grid cols-2" style="align-items:start; margin-top:12px">
+          <div class="card">
+            <strong>Offer Mix</strong>
+            <ul class="muted" style="margin:10px 0 0; padding-left:18px">
+              <li>60% Clinical & Public Health</li>
+              <li>30% Industry & Agri‑tech</li>
+              <li>10% Research & Labs</li>
+            </ul>
+          </div>
+          <div class="card">
+            <strong>Geography</strong>
+            <ul class="muted" style="margin:10px 0 0; padding-left:18px">
+              <li>70% Maharashtra</li>
+              <li>20% Other states</li>
+              <li>10% International programs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories (slider) -->
+    <section id="stories" class="section bg-tint-1 divided anchor">
+      <div class="container">
+        <h2>Success Stories</h2>
+        <div class="story-slider" data-slider="stories" data-auto="true" data-interval="4200">
+          <div class="story-viewport">
+            <div class="story-track">
+              <div class="story">
+                <div class="card">
+                  <div class="avatar"><img src="assets/alumni-placed1.jpg" alt="Alumnus portrait" loading="lazy"></div>
+                  <div>
+                    <strong>Alumnus A → VetCare Ltd.</strong>
+                    <p class="muted">“From clinic rotations to a dream role — the Cell’s mock interviews helped me stand out.”</p>
+                  </div>
+                </div>
+              </div>
+              <div class="story">
+                <div class="card">
+                  <div class="avatar"><img src="assets/alumni-placed2.jpg" alt="Alumnus portrait" loading="lazy"></div>
+                  <div>
+                    <strong>Alumnus B → AgriLabs</strong>
+                    <p class="muted">“The research assistant track matched my interests perfectly.”</p>
+                  </div>
+                </div>
+              </div>
+              <div class="story">
+                <div class="card">
+                  <div class="avatar"><img src="assets/alumni-placed3.jpg" alt="Alumnus portrait" loading="lazy"></div>
+                  <div>
+                    <strong>Alumnus C → City Vet Hospitals</strong>
+                    <p class="muted">“Structured process, quick feedback, and great support.”</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="arrows">
+            <button type="button" data-prev aria-label="Previous">‹</button>
+            <button type="button" data-next aria-label="Next">›</button>
+          </div>
+          <div class="dots" role="tablist" aria-label="Select story"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Downloads & Contact -->
+    <section id="downloads" class="section anchor">
+      <div class="container">
+        <h2>Downloads</h2>
+        <div class="auto min-260" style="margin-top:12px">
+          <a class="card" href="#"><strong>Placement Brochure (PDF)</strong><p class="muted">Company guide & calendar</p></a>
+          <a class="card" href="#"><strong>Recruitment Policy (PDF)</strong><p class="muted">Eligibility & guidelines</p></a>
+          <a class="card" href="#"><strong>Internship Handbook (PDF)</strong><p class="muted">Semester internships</p></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section bg-tint-2 divided anchor">
+      <div class="container">
+        <h2>Contact — Training & Placement Cell</h2>
+        <div class="grid cols-2" style="align-items:start; margin-top:12px">
+          <div class="card">
+            <strong>Office</strong>
+            <p class="muted" style="margin-top:6px">KNPCVS, Shirwal • Maharashtra</p>
+            <p class="muted">Email: tpc@knpcvs.edu.in</p>
+            <p class="muted">Phone: +91 98765 43210</p>
+          </div>
+          <div class="card">
+            <strong>For Recruiters</strong>
+            <p class="muted" style="margin-top:6px">Write to us for slotting, PPTs, and job descriptions. We’ll respond within 2 business days.</p>
+            <p class="muted">Brochure and policy are available in Downloads.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{% static 'app/js/placement.js' %}"></script>
+{% endblock %}

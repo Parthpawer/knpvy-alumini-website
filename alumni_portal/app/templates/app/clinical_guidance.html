@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'app/css/clinical_guidance.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="breadcrumbs"><a href="home.html">Home</a> • Clinical Guides</div>
+      <h1 style="margin-top:8px">Clinical Guides Library</h1>
+      <p class="lead">Peer-reviewed SOPs, protocols and algorithms maintained by KNPCVS alumni & faculty.</p>
+    </div>
+  </section>
+
+  <!-- Catalog -->
+  <main class="section">
+    <div class="container shell">
+      <!-- Filter Rail -->
+      <aside class="rail" id="rail">
+        <div class="rail-toggle">
+          <h2 style="margin:0">Filters</h2>
+          <button class="btn" id="openRail" aria-controls="rail" aria-expanded="false">Open</button>
+        </div>
+
+        <div class="scrim" id="scrim" aria-hidden="true"></div>
+        <div class="card panel" role="region" aria-label="Filter clinical guides">
+          <div class="search" role="search">
+            <input id="q" type="search" placeholder="Search title or keywords…" aria-label="Search clinical guides" />
+          </div>
+
+          <h3 style="margin-top:14px">Type</h3>
+          <div class="group" id="typeChips">
+            <button class="chip active" data-type="">All</button>
+            <button class="chip" data-type="sop">SOP</button>
+            <button class="chip" data-type="protocol">Protocol</button>
+            <button class="chip" data-type="algorithm">Algorithm</button>
+            <button class="chip" data-type="checklist">Checklist</button>
+          </div>
+
+          <h3 style="margin-top:14px">Scope</h3>
+          <div class="group" id="scopeChips">
+            <button class="chip active" data-scope="">All</button>
+            <button class="chip" data-scope="small">Small Animal</button>
+            <button class="chip" data-scope="large">Large Animal</button>
+            <button class="chip" data-scope="poultry">Poultry</button>
+          </div>
+
+          <h3 style="margin-top:14px">System</h3>
+          <div class="group" id="systemChips">
+            <button class="chip active" data-system="">All</button>
+            <button class="chip" data-system="respiratory">Respiratory</button>
+            <button class="chip" data-system="gi">GI</button>
+            <button class="chip" data-system="repro">Reproductive</button>
+            <button class="chip" data-system="msk">MSK</button>
+          </div>
+
+          <div class="rail-footer">
+            <button class="btn primary" id="applyMobile">Apply</button>
+            <button class="btn" id="reset">Reset</button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Results Area -->
+      <section aria-label="Results">
+        <div class="results-head">
+          <div class="muted">Browse curated sets or jump straight to guides.</div>
+          <div class="count" id="count">0 results</div>
+          <button class="btn" id="openRailTop" aria-controls="rail" aria-expanded="false" style="margin-left:auto; display:none">Filters</button>
+        </div>
+
+        <!-- Collections -->
+        <div class="collections" style="margin-top:12px">
+          <article class="card">
+            <h3>Emergency Essentials</h3>
+            <p class="muted">Anaphylaxis SOP, CPR checklist, shock algorithm, dosing table.</p>
+            <div class="btnblock"><a class="btn primary" href="#">Download ZIP</a><a class="btn ghost" href="#">See contents</a></div>
+          </article>
+          <article class="card">
+            <h3>Calving & Neonate</h3>
+            <p class="muted">Dystocia decision tree, neonatal scours protocol, colostrum guide.</p>
+            <div class="btnblock"><a class="btn primary" href="#">Download ZIP</a><a class="btn ghost" href="#">See contents</a></div>
+          </article>
+          <article class="card">
+            <h3>Respiratory Care</h3>
+            <p class="muted">BRD protocol, pneumonia triage, isolation SOP & record sheets.</p>
+            <div class="btnblock"><a class="btn primary" href="#">Download ZIP</a><a class="btn ghost" href="#">See contents</a></div>
+          </article>
+        </div>
+
+        <!-- Guides Grid -->
+        <div id="guides" class="grid guides" style="margin-top:var(--s4)">
+          <!-- Card 1 -->
+          <article class="card guide" data-type="algorithm" data-scope="large" data-system="repro"
+                   data-title="Bovine Dystocia Management" data-keywords="calving dystocia traction fetotomy c-section bovine">
+            <div class="thumb"><img src="assets/g-dystocia.jpg" alt="Bovine dystocia guide" loading="lazy"></div>
+            <div>
+              <div class="meta"><span class="badge">Algorithm</span><span class="muted">Updated: 2025-06</span></div>
+              <h3>Bovine Dystocia Management</h3>
+              <p class="muted">Decision tree for traction vs. fetotomy/C-section; postpartum care and records.</p>
+              <div class="meta"><span class="pill">Bovine</span><span class="pill">Reproductive</span></div>
+            </div>
+            <div class="actions"><a class="btn primary" href="#">Open</a><a class="btn" href="#">PDF</a></div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card guide" data-type="sop" data-scope="small" data-system="respiratory"
+                   data-title="Small Animal Anaphylaxis SOP" data-keywords="epinephrine airway shock emergency canine feline">
+            <div class="thumb"><img src="assets/g-anaphylaxis.jpg" alt="Anaphylaxis SOP" loading="lazy"></div>
+            <div>
+              <div class="meta"><span class="badge">SOP</span><span class="muted">Updated: 2025-04</span></div>
+              <h3>Small Animal Anaphylaxis SOP</h3>
+              <p class="muted">Recognition, dosing, airway/fluids, adjuncts, observation & discharge.</p>
+              <div class="meta"><span class="pill">Canine</span><span class="pill">Feline</span><span class="pill">Respiratory</span></div>
+            </div>
+            <div class="actions"><a class="btn primary" href="#">Open</a><a class="btn" href="#">PDF</a></div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card guide" data-type="protocol" data-scope="large" data-system="gi"
+                   data-title="Diarrhea in Neonatal Ruminants" data-keywords="scours fluids electrolytes antibiotics calf kid lamb">
+            <div class="thumb"><img src="assets/g-scours.jpg" alt="Neonatal diarrhea protocol" loading="lazy"></div>
+            <div>
+              <div class="meta"><span class="badge">Protocol</span><span class="muted">Updated: 2025-02</span></div>
+              <h3>Diarrhea in Neonatal Ruminants</h3>
+              <p class="muted">Fluid plans, antimicrobials, hygiene, prevention and monitoring sheets.</p>
+              <div class="meta"><span class="pill">Bovine</span><span class="pill">Caprine</span><span class="pill">Ovine</span><span class="pill">GI</span></div>
+            </div>
+            <div class="actions"><a class="btn primary" href="#">Open</a><a class="btn" href="#">PDF</a></div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card guide" data-type="checklist" data-scope="large" data-system="msk"
+                   data-title="Equine Lameness Exam Checklist" data-keywords="gait hoof flexion nerve blocks equine msk">
+            <div class="thumb"><img src="assets/g-lameness.jpg" alt="Equine lameness checklist" loading="lazy"></div>
+            <div>
+              <div class="meta"><span class="badge">Checklist</span><span class="muted">Updated: 2024-11</span></div>
+              <h3>Equine Lameness Exam Checklist</h3>
+              <p class="muted">History, inspection, palpation, flexion tests, blocks, imaging plan.</p>
+              <div class="meta"><span class="pill">Equine</span><span class="pill">MSK</span></div>
+            </div>
+            <div class="actions"><a class="btn primary" href="#">Open</a><a class="btn" href="#">PDF</a></div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card guide" data-type="protocol" data-scope="poultry" data-system="respiratory"
+                   data-title="Avian Influenza Suspect Protocol" data-keywords="biosecurity ppe outbreak sampling poultry ai h5">
+            <div class="thumb"><img src="assets/g-avian.jpg" alt="Avian influenza protocol" loading="lazy"></div>
+            <div>
+              <div class="meta"><span class="badge">Protocol</span><span class="muted">Updated: 2025-03</span></div>
+              <h3>Avian Influenza Suspect Protocol</h3>
+              <p class="muted">Triage, PPE, sampling, quarantine, notification & cleaning procedures.</p>
+              <div class="meta"><span class="pill">Poultry</span><span class="pill">Respiratory</span></div>
+            </div>
+            <div class="actions"><a class="btn primary" href="#">Open</a><a class="btn" href="#">PDF</a></div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card guide" data-type="algorithm" data-scope="small" data-system=""
+                   data-title="Pruritus Workup (Small Animal)" data-keywords="allergy ectoparasites diet atopy derm canine feline">
+            <div class="thumb"><img src="assets/g-pruritus.jpg" alt="Pruritus algorithm" loading="lazy"></div>
+            <div>
+              <div class="meta"><span class="badge">Algorithm</span><span class="muted">Updated: 2024-10</span></div>
+              <h3>Pruritus Workup (Small Animal)</h3>
+              <p class="muted">Rule-outs, scrapings, diet trials, allergy testing, treatment ladder.</p>
+              <div class="meta"><span class="pill">Canine</span><span class="pill">Feline</span></div>
+            </div>
+            <div class="actions"><a class="btn primary" href="#">Open</a><a class="btn" href="#">PDF</a></div>
+          </article>
+
+          <!-- Card 7 -->
+          <article class="card guide" data-type="protocol" data-scope="large" data-system="respiratory"
+                   data-title="Bovine Respiratory Disease — Feedlot" data-keywords="brd metaphylaxis vaccination records bovine">
+            <div class="thumb"><img src="assets/g-brd.jpg" alt="BRD protocol" loading="lazy"></div>
+            <div>
+              <div class="meta"><span class="badge">Protocol</span><span class="muted">Updated: 2025-01</span></div>
+              <h3>Bovine Respiratory Disease — Feedlot</h3>
+              <p class="muted">Risk scoring, vaccination, metaphylaxis, case definitions & records.</p>
+              <div class="meta"><span class="pill">Bovine</span></div>
+            </div>
+            <div class="actions"><a class="btn primary" href="#">Open</a><a class="btn" href="#">PDF</a></div>
+          </article>
+
+          <!-- Card 8 -->
+          <article class="card guide" data-type="sop" data-scope="large" data-system="repro"
+                   data-title="CAE/CL Biosecurity SOP" data-keywords="caprine arthritis lymphadenitis testing culling goats sheep">
+            <div class="thumb"><img src="assets/g-caecl.jpg" alt="CAE/CL biosecurity SOP" loading="lazy"></div>
+            <div>
+              <div class="meta"><span class="badge">SOP</span><span class="muted">Updated: 2024-09</span></div>
+              <h3>CAE/CL Biosecurity SOP</h3>
+              <p class="muted">Testing cadence, kid management, sanitation, segregation guidelines.</p>
+              <div class="meta"><span class="pill">Caprine</span><span class="pill">Ovine</span><span class="pill">Reproductive</span></div>
+            </div>
+            <div class="actions"><a class="btn primary" href="#">Open</a><a class="btn" href="#">PDF</a></div>
+          </article>
+        </div>
+
+        <p id="noResults" class="muted" style="display:none; margin-top:10px">No guides match your filters.</p>
+
+        <!-- Contribution + Policy -->
+        
+
+          <div class="grid" style="margin-top:12px">
+           
+            <details class="card">
+              <summary>Disclaimer</summary>
+              <p class="muted" style="margin-top:8px">These guides support—not replace—clinical judgment. Follow local regulations and withdrawal times.</p>
+            </details>
+          </div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  {% endblock %}
+
+{% block page_scripts %}
+<script src="{% static 'app/js/clinical_guidance.js' %}"></script>
+{% endblock %}

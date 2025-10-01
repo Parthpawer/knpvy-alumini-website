@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'app/css/research.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <div class="breadcrumbs"><a href="home.html">Home</a> • Research Papers</div>
+        <h1 style="margin-top:8px">Research Papers & Publications</h1>
+        <p class="lead">Peer-reviewed outputs from KNPCVS faculty and alumni. Browse, filter, and cite.</p>
+    </div>
+</section>
+
+<!-- ===================== Spotlight (no filters/sort) ===================== -->
+<section class="section" aria-labelledby="spotlight-title">
+    <div class="container">
+        <div class="section-hdr">
+            <div class="eyebrow" aria-hidden="true">Featured</div>
+            <h2 id="spotlight-title" style="margin:0">Spotlight Papers</h2>
+            <p class="lead" style="margin-left:auto">Editor’s picks (hand-curated)</p>
+        </div>
+
+        <div class="spot-grid" style="margin-top:12px" id="spotlight">
+            <!-- 2–4 spotlight items, NOT affected by filters/sort -->
+            <article class="card spot-card">
+                <h3>AI-Assisted Diagnosis in Bovine Respiratory Disease</h3>
+                <p class="muted">Patil K, Rao M, et&nbsp;al. <em>Vet Clin Sci</em>, 2025. Open Access.</p>
+                <div class="btnblock"><a class="btn primary" href="#">Read PDF</a><a class="btn ghost" href="#">DOI</a>
+                </div>
+            </article>
+
+            <article class="card spot-card">
+                <h3>Zoonotic Influenza Risks in Poultry Systems</h3>
+                <p class="muted">Sharma P, Ahmed S. <em>One Health Rev</em>, 2025.</p>
+                <div class="btnblock"><a class="btn primary" href="#">Read PDF</a><a class="btn ghost" href="#">DOI</a>
+                </div>
+            </article>
+
+            <article class="card spot-card">
+                <h3>Adoption of Telemedicine in Veterinary Practice</h3>
+                <p class="muted">Shetty V, Chavan N. <em>Vet Practice Review</em>, 2022.</p>
+                <div class="btnblock"><a class="btn primary" href="#">Read PDF</a><a class="btn ghost" href="#">DOI</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== All Papers (filters + sort) ===================== -->
+<main class="section" aria-labelledby="all-title">
+    <div class="container">
+        <div class="section-hdr">
+            <div class="eyebrow" aria-hidden="true">Catalog</div>
+            <h2 id="all-title" style="margin:0">All Papers</h2>
+            <p class="lead" style="margin-left:auto">Search, filter, and sort publications</p>
+        </div>
+    </div>
+
+    <div class="container shell" style="margin-top:12px">
+        <!-- Filter Rail -->
+        <aside class="rail" id="rail">
+            <div class="rail-toggle">
+                <h3 style="margin:0">Filters</h3>
+                <button class="btn" id="openRail" aria-controls="rail" aria-expanded="false">Open</button>
+            </div>
+
+            <div class="scrim" id="scrim" aria-hidden="true"></div>
+            <div class="card panel" role="region" aria-label="Filter papers">
+                <div class="handle" aria-hidden="true"></div>
+
+                <!-- DESKTOP search (in the rail). Hidden on mobile -->
+                <div class="search desktop" role="search" style="margin-bottom:10px">
+                    <input id="qDesk" type="search" placeholder="Search title, author, keyword…"
+                        aria-label="Search papers (desktop)" />
+                </div>
+
+                <h3>Year</h3>
+                <div class="group" id="yearChips">
+                    <!-- Populated by JS from #papers -->
+                </div>
+
+                <h3 style="margin-top:14px">Type</h3>
+                <div class="group" id="typeChips">
+                    <button class="chip active" data-type="">All</button>
+                    <button class="chip" data-type="article">Article</button>
+                    <button class="chip" data-type="review">Review</button>
+                    <button class="chip" data-type="case">Case Report</button>
+                    <button class="chip" data-type="preprint">Preprint</button>
+                </div>
+
+                <div class="rail-footer">
+                    <button class="btn primary" id="applyMobile" type="button">Done</button>
+                    <button class="btn" id="reset" type="button">Reset</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Results (All Papers only) -->
+        <section aria-label="All papers results">
+            <div class="results-head">
+                <div class="muted">Browse peer-reviewed outputs and preprints.</div>
+                <div class="sorter" style="margin-left:auto">
+                    <label for="sort" class="muted">Sort:</label>
+                    <select id="sort" class="btn" aria-label="Sort papers">
+                        <option value="new">Newest first</option>
+                        <option value="old">Oldest first</option>
+                    </select>
+                </div>
+                <div class="count" id="count">0 results</div>
+                <button class="btn" id="openRailTop" aria-controls="rail" aria-expanded="false"
+                    style="display:none">Filters</button>
+            </div>
+
+            <!-- MOBILE search (separate from filter sheet). Hidden on desktop -->
+            <div class="mobile-search" role="search" style="margin:10px 0">
+                <input id="qMobile" type="search" placeholder="Search title, author, keyword…"
+                    aria-label="Search papers (mobile)"
+                    style="flex:1; padding:10px 12px; border-radius:12px; border:var(--thin)" />
+            </div>
+
+            <!-- Papers Grid (these are affected by filters/sort) -->
+            <div id="papers" class="grid papers" style="margin-top:var(--s4)">
+                <article class="card paper" data-year="2025" data-type="article"
+                    data-title="AI-Assisted Diagnosis in Bovine Respiratory Disease" data-authors="Patil K; Rao M"
+                    data-venue="Veterinary Clinical Science"
+                    data-keywords="bovine respiratory disease machine learning imaging feedlot">
+                    <div class="meta">
+                        <span class="badge">2025</span>
+                        <span class="pill">Article</span>
+                        <span class="pill">Open Access</span>
+                    </div>
+                    <h3>AI-Assisted Diagnosis in Bovine Respiratory Disease</h3>
+                    <p class="muted">Patil K, Rao M, Deshmukh S. <em>Vet Clin Sci</em>, 2025.</p>
+                    <div class="btnblock actions">
+                        <a class="btn primary" href="#">PDF</a>
+                        <a class="btn" href="#">DOI</a>
+                        <button class="btn citeBtn" data-target="c1">Cite</button>
+                    </div>
+                    <div class="cite" id="c1">
+                        <pre>@article{Patil2025BRD,
+  title={AI-Assisted Diagnosis in Bovine Respiratory Disease},
+  author={Patil, K and Rao, M and Deshmukh, S},
+  journal={Veterinary Clinical Science},
+  year={2025},
+  doi={10.0000/example.doi1}
+}</pre>
+                        <button class="btn" data-copy="c1">Copy BibTeX</button>
+                    </div>
+                </article>
+
+                <article class="card paper" data-year="2025" data-type="review"
+                    data-title="Zoonotic Influenza Risks in Poultry Systems" data-authors="Sharma P; Ahmed S"
+                    data-venue="One Health Review" data-keywords="avian influenza poultry biosecurity zoonoses">
+                    <div class="meta"><span class="badge">2025</span><span class="pill">Review</span></div>
+                    <h3>Zoonotic Influenza Risks in Poultry Systems</h3>
+                    <p class="muted">Sharma P, Ahmed S. <em>One Health Rev</em>, 2025.</p>
+                    <div class="btnblock actions">
+                        <a class="btn primary" href="#">PDF</a>
+                        <a class="btn" href="#">DOI</a>
+                        <button class="btn citeBtn" data-target="c2">Cite</button>
+                    </div>
+                    <div class="cite" id="c2">
+                        <pre>@review{Sharma2025Zoonosis,
+  title={Zoonotic Influenza Risks in Poultry Systems},
+  author={Sharma, P and Ahmed, S},
+  journal={One Health Review},
+  year={2025},
+  doi={10.0000/example.doi2}
+}</pre>
+                        <button class="btn" data-copy="c2">Copy BibTeX</button>
+                    </div>
+                </article>
+
+                <article class="card paper" data-year="2024" data-type="case"
+                    data-title="Hypertrophic Cardiomyopathy in a Domestic Cat" data-authors="Kulkarni R; Jain T"
+                    data-venue="Vet Case Reports" data-keywords="feline cardiomyopathy echocardiography case-report">
+                    <div class="meta"><span class="badge">2024</span><span class="pill">Case Report</span></div>
+                    <h3>Hypertrophic Cardiomyopathy in a Domestic Cat</h3>
+                    <p class="muted">Kulkarni R, Jain T. <em>Vet Case Reports</em>, 2024.</p>
+                    <div class="btnblock actions">
+                        <a class="btn primary" href="#">PDF</a>
+                        <a class="btn" href="#">DOI</a>
+                        <button class="btn citeBtn" data-target="c3">Cite</button>
+                    </div>
+                    <div class="cite" id="c3">
+                        <pre>@article{Kulkarni2024HCM,
+  title={Hypertrophic Cardiomyopathy in a Domestic Cat},
+  author={Kulkarni, R and Jain, T},
+  journal={Veterinary Case Reports},
+  year={2024},
+  doi={10.0000/example.doi3}
+}</pre>
+                        <button class="btn" data-copy="c3">Copy BibTeX</button>
+                    </div>
+                </article>
+
+                <article class="card paper" data-year="2023" data-type="article"
+                    data-title="Management of Caprine Arthritis Encephalitis in Smallholder Farms"
+                    data-authors="More S; Pawar A" data-venue="J. Small Ruminant Health"
+                    data-keywords="CAE goats management biosecurity">
+                    <div class="meta"><span class="badge">2023</span><span class="pill">Article</span></div>
+                    <h3>Management of Caprine Arthritis Encephalitis in Smallholder Farms</h3>
+                    <p class="muted">More S, Pawar A. <em>J. Small Ruminant Health</em>, 2023.</p>
+                    <div class="btnblock actions">
+                        <a class="btn primary" href="#">PDF</a>
+                        <a class="btn" href="#">DOI</a>
+                        <button class="btn citeBtn" data-target="c4">Cite</button>
+                    </div>
+                    <div class="cite" id="c4">
+                        <pre>@article{More2023CAE,
+  title={Management of Caprine Arthritis Encephalitis in Smallholder Farms},
+  author={More, S and Pawar, A},
+  journal={Journal of Small Ruminant Health},
+  year={2023},
+  doi={10.0000/example.doi4}
+}</pre>
+                        <button class="btn" data-copy="c4">Copy BibTeX</button>
+                    </div>
+                </article>
+
+                <article class="card paper" data-year="2022" data-type="review"
+                    data-title="Adoption of Telemedicine in Veterinary Practice" data-authors="Shetty V; Chavan N"
+                    data-venue="Vet Practice Review" data-keywords="telemedicine remote consults adoption review">
+                    <div class="meta"><span class="badge">2022</span><span class="pill">Review</span></div>
+                    <h3>Adoption of Telemedicine in Veterinary Practice</h3>
+                    <p class="muted">Shetty V, Chavan N. <em>Vet Practice Review</em>, 2022.</p>
+                    <div class="btnblock actions">
+                        <a class="btn primary" href="#">PDF</a>
+                        <a class="btn" href="#">DOI</a>
+                        <button class="btn citeBtn" data-target="c5">Cite</button>
+                    </div>
+                    <div class="cite" id="c5">
+                        <pre>@review{Shetty2022Telemed,
+  title={Adoption of Telemedicine in Veterinary Practice},
+  author={Shetty, V and Chavan, N},
+  journal={Veterinary Practice Review},
+  year={2022},
+  doi={10.0000/example.doi5}
+}</pre>
+                        <button class="btn" data-copy="c5">Copy BibTeX</button>
+                    </div>
+                </article>
+
+                <article class="card paper" data-year="2025" data-type="preprint"
+                    data-title="Antimicrobial Stewardship in Mixed Animal Hospitals" data-authors="Desai R; Gupta P"
+                    data-venue="bioRxiv" data-keywords="antibiotics stewardship amr policy preprint">
+                    <div class="meta"><span class="badge">2025</span><span class="pill">Preprint</span></div>
+                    <h3>Antimicrobial Stewardship in Mixed Animal Hospitals</h3>
+                    <p class="muted">Desai R, Gupta P. <em>bioRxiv</em>, 2025.</p>
+                    <div class="btnblock actions">
+                        <a class="btn primary" href="#">PDF</a>
+                        <a class="btn" href="#">DOI</a>
+                        <button class="btn citeBtn" data-target="c6">Cite</button>
+                    </div>
+                    <div class="cite" id="c6">
+                        <pre>@misc{Desai2025AMR,
+  title={Antimicrobial Stewardship in Mixed Animal Hospitals},
+  author={Desai, R and Gupta, P},
+  howpublished={bioRxiv},
+  year={2025},
+  doi={10.0000/example.doi6}
+}</pre>
+                        <button class="btn" data-copy="c6">Copy BibTeX</button>
+                    </div>
+                </article>
+            </div>
+
+            <p id="noResults" class="muted" style="display:none; margin-top:10px">No papers match your filters.</p>
+        </section>
+    </div>
+</main>
+
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{% static 'app/js/research.js' %}"></script>
+{% endblock %}

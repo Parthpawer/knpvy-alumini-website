@@ -170,18 +170,26 @@
     <h2>Student Welfare</h2>
     <div class="grid cols-3" style="margin-top:12px">
       <article class="card" style="--card-bg: url({% static 'app/assets/scholarship_card.jpg' %})">
+        <a href="{% url 'scholarship' %}">
         <h3>Scholarships</h3>
-        <p class="muted">Confidential support, workshops, and referrals.</p>
-      </article>
+          <p class="muted">Confidential support, workshops, and referrals.</p>
+        </a>
+        </article>
 
       <article class="card" style="--card-bg: url({% static 'app/assets/assistanship_card.jpg' %})">
-        <h3>Assistantships</h3>
-        <p class="muted">Scholarships, assistantships, and emergency aid information.</p>
-      </article>
+        <a href="{% url 'assistanceship' %}">
+
+          <h3>Assistantships</h3>
+          <p class="muted">Scholarships, assistantships, and emergency aid information.</p>
+        </a>
+        </article>
 
       <article class="card" style="--card-bg: url({% static 'app/assets/student_awards_card.webp' %})">
-        <h3>Student's Awards</h3>
-        <p class="muted">Peer groups and alumni mentors for guidance.</p>
+        <a href="{% url 'awards' %}">
+          
+          <h3>Student's Awards</h3>
+          <p class="muted">Peer groups and alumni mentors for guidance.</p>
+        </a>
       </article>
     </div>
   </div>
@@ -255,13 +263,13 @@
     </div>
     <div class="grid cols-3" style="margin-top:12px">
       <article class="card">
-        <a href="#"><strong>Clinical Guides</strong>
+        <a href="{% url 'clinical-guidance' %}"><strong>Clinical Guides</strong>
           <p class="muted">Protocols & SOPs</p>
         </a>
       </article>
 
       <article class="card">
-        <a href="#"><strong>Research Papers</strong>
+        <a href="{% url 'research' %}"><strong>Research Papers</strong>
           <p class="muted">Selected publications</p>
         </a>
       </article>
@@ -308,14 +316,20 @@
     <div class="grid cols-2" style="margin-top:12px">
       <!-- Card 1: Farmer’s Corner -->
       <article class="card bg-card" style="--card-bg: url({% static 'app/assets/farmers_corner_bg.jpg' %})">
-        <h3>Farmer’s Corner</h3>
-        <p class="muted">Seasonal care, nutrition, hygiene, and biosecurity tips.</p>
+        <a href="{% url 'farmers_corner' %}">
+
+          <h3>Farmer’s Corner</h3>
+          <p class="muted">Seasonal care, nutrition, hygiene, and biosecurity tips.</p>
+        </a>
       </article>
 
       <!-- Card 2: Clinical Case / Spot -->
       <article class="card bg-card" style="--card-bg: url({% static 'app/assets/clinical_spot_bg.jpg' %})">
-        <h3>Clinical Case / Spot</h3>
-        <p class="muted">Vignettes, imaging, and quick reads for discussion.</p>
+        <a href="{% url 'clinical-guidance' %}">
+
+          <h3>Clinical Case / Spot</h3>
+          <p class="muted">Vignettes, imaging, and quick reads for discussion.</p>
+        </a>
       </article>
     </div>
   </div>

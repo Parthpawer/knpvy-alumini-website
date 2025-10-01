@@ -1,0 +1,211 @@
+  {% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'app/css/activity.css' %}">
+{% endblock %}
+
+{% block content %}
+  
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs"><a href="home.html">Home</a> • Activities</div>
+      <h1 style="margin-top:8px">What We Do</h1>
+      <p class="lead">Four pillars — Reunions, Scholarships, Mentorship, Outreach — powering learning, careers, and community.</p>
+      <div class="quicknav" aria-label="Quick navigation">
+        <a class="chip" href="#pillars">Pillars</a>
+        <a class="chip" href="#programs">Programs</a><a class="chip" href="#scholarships">Scholarships</a>
+        <a class="chip" href="#outreach">Outreach</a>
+        <a class="chip" href="#reunions">Reunions</a>
+        <a class="chip" href="#impact">Impact</a>
+        <a class="chip" href="#downloads">Downloads</a>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <!-- Pillars overview -->
+    <section id="pillars" class="section bg-tint-2 divided">
+      <div class="container">
+        <h2>Pillars</h2>
+        <div class="auto min-260" style="margin-top:12px">
+          <article class="card pillar"><div class="icon" aria-hidden="true"></div><div><h3>Reunions</h3><p class="muted">Cross-batch networking, nostalgia, and recognition.</p></div></article>
+          <article class="card pillar"><div class="icon" aria-hidden="true"></div><div><h3>Scholarships</h3><p class="muted">Merit & need-based student support and assistantships.</p></div></article>
+          <article class="card pillar"><div class="icon" aria-hidden="true"></div><div><h3>Mentorship</h3><p class="muted">Talks, guidance, and career pathways.</p></div></article>
+          <article class="card pillar"><div class="icon" aria-hidden="true"></div><div><h3>Outreach</h3><p class="muted">Serving society through clinics and awareness.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs (display only) -->
+    <section id="programs" class="section bg-tint-1 divided">
+      <div class="container">
+        <h2>Programs & Initiatives</h2>
+        <p class="lead">A snapshot of ongoing initiatives across our four pillars.</p>
+        <div class="auto min-260" style="margin-top:12px">
+          <!-- Reunions -->
+          <article class="card program">
+            <div class="tile"><img src="assets/reunion-1.jpg" alt="Alumni meet" loading="lazy"></div>
+            <div>
+              <span class="badge">Reunions</span>
+              <h3>Annual Alumni Meet</h3>
+              <p class="muted">Keynotes, campus tours, awards, and networking sessions.</p>
+              <div class="btns"><a class="btnlink" href="events.html">See Events</a></div>
+            </div>
+          </article>
+          <article class="card program">
+            <div class="tile"><img src="assets/reunion-2.jpg" alt="City chapter gathering" loading="lazy"></div>
+            <div>
+              <span class="badge">Reunions</span>
+              <h3>City Chapter Mixers</h3>
+              <p class="muted">Periodic meetups to connect alumni regionally.</p>
+              <div class="btns"><a class="btnlink" href="events.html#chapters">Chapters</a></div>
+            </div>
+          </article>
+
+          <!-- Scholarships -->
+          <article class="card program">
+            <div class="tile"><img src="assets/scholar-1.jpg" alt="Scholarship ceremony" loading="lazy"></div>
+            <div>
+              <span class="badge">Scholarships</span>
+              <h3>Merit Scholarships</h3>
+              <p class="muted">Support for academic excellence across years.</p>
+              <div class="btns"><a class="btnlink" href="#scholarships">Learn More</a></div>
+            </div>
+          </article>
+          <article class="card program">
+            <div class="tile"><img src="assets/scholar-2.jpg" alt="Student aid" loading="lazy"></div>
+            <div>
+              <span class="badge">Scholarships</span>
+              <h3>Need-Based Aid</h3>
+              <p class="muted">Emergency and sustained assistance for students.</p>
+              <div class="btns"><a class="btnlink" href="#scholarships">Aid Overview</a></div>
+            </div>
+          </article>
+
+          <!-- Mentorship -->
+          <article class="card program">
+            <div class="tile"><img src="assets/mentor-1.jpg" alt="Mentor talk" loading="lazy"></div>
+            <div>
+              <span class="badge">Mentorship</span>
+              <h3>Alumni Talk Series</h3>
+              <p class="muted">Industry perspectives and career journeys.</p>
+              <div class="btns"><a class="btnlink" href="events.html#talks">Talk Schedule</a></div>
+            </div>
+          </article>
+          <article class="card program">
+            <div class="tile"><img src="assets/mentor-2.jpg" alt="One-on-one mentoring" loading="lazy"></div>
+            <div>
+              <span class="badge">Mentorship</span>
+              <h3>1:1 Mentoring</h3>
+              <p class="muted">Guidance by interest, batch, or location.</p>
+              <div class="btns"><a class="btnlink" href="#downloads">Program Details</a></div>
+            </div>
+          </article>
+
+          <!-- Outreach -->
+          <article class="card program">
+            <div class="tile"><img src="assets/outreach-1.jpg" alt="Community clinic" loading="lazy"></div>
+            <div>
+              <span class="badge">Outreach</span>
+              <h3>Community Clinics</h3>
+              <p class="muted">Free camps, vaccination drives, and awareness.</p>
+              <div class="btns"><a class="btnlink" href="#outreach">See Outreach</a></div>
+            </div>
+          </article>
+          <article class="card program">
+            <div class="tile"><img src="assets/outreach-2.jpg" alt="Farmer training" loading="lazy"></div>
+            <div>
+              <span class="badge">Outreach</span>
+              <h3>Farmer Training</h3>
+              <p class="muted">Workshops on dairy health, poultry, and biosecurity.</p>
+              <div class="btns"><a class="btnlink" href="#outreach">Training Tracks</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mentorship flow --><!-- Scholarships overview -->
+    <section id="scholarships" class="section bg-gradient-soft divided">
+      <div class="container">
+        <h2>Scholarships & Aid</h2>
+        <div class="auto min-320" style="margin-top:12px">
+          <article class="card"><h3>Merit Awards</h3><p class="muted">Top performance across semesters and specialisations.</p><span class="pill">Merit</span></article>
+          <article class="card"><h3>Need-Based Support</h3><p class="muted">Emergency and semester stipends on review.</p><span class="pill">Aid</span></article>
+          <article class="card"><h3>Assistantships</h3><p class="muted">Faculty-led research and teaching support stipends.</p><span class="pill">Research</span></article>
+        </div>
+        <div class="btns" style="margin-top:12px">
+          <a class="btnlink" href="#downloads">Guidelines (PDF)</a>
+          <a class="btnlink" href="events.html#scholarships">Scholarship Calendar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outreach & Reunions -->
+    <section id="outreach" class="section bg-tint-2 divided">
+      <div class="container">
+        <h2>Community Outreach</h2>
+        <div class="auto min-320" style="margin-top:12px">
+          <article class="card"><h3>Clinics & Camps</h3><p class="muted">Seasonal vaccination and welfare camps.</p></article>
+          <article class="card"><h3>Awareness Drives</h3><p class="muted">Hygiene, nutrition, and disease prevention.</p></article>
+          <article class="card"><h3>Farmer Training</h3><p class="muted">Hands-on modules and toolkits.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reunions" class="section bg-tint-1 divided">
+      <div class="container">
+        <h2>Reunions</h2>
+        <div class="grid cols-2">
+          <div class="card">
+            <strong>Formats</strong>
+            <ul class="muted" style="margin:10px 0 0; padding-left:18px">
+              <li>Annual Alumni Meet (Campus)</li>
+              <li>City Chapter Mixers</li>
+              <li>Batch Milestones (5/10/20-year)</li>
+            </ul>
+            <div class="btns" style="margin-top:10px"><a class="btnlink" href="events.html">See Upcoming</a></div>
+          </div>
+          <div class="card">
+            <strong>Tips to Plan</strong>
+            <ul class="muted" style="margin:10px 0 0; padding-left:18px">
+              <li>Pick a theme & agenda</li>
+              <li>Nominate coordinators</li>
+              <li>Leverage our event kit</li>
+            </ul>
+            <div class="btns" style="margin-top:10px"><a class="btnlink" href="#downloads">Event Kit</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact -->
+    <section id="impact" class="section bg-deep divided">
+      <div class="container">
+        <h2>Impact at a Glance</h2>
+        <div class="auto min-220" style="margin-top:12px">
+          <article class="card stat"><strong>95%</strong><span>Eligible placements</span></article>
+          <article class="card stat"><strong>80+</strong><span>Recruiters engaged</span></article>
+          <article class="card stat"><strong>₹50L+</strong><span>Scholarships raised</span></article>
+          <article class="card stat"><strong>300+</strong><span>Mentor-mentee pairs</span></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Downloads -->
+    <section id="downloads" class="section">
+      <div class="container">
+        <h2>Downloads & Resources</h2>
+        <div class="auto min-260" style="margin-top:12px">
+          <a class="card" href="#"><strong>Scholarship Guidelines (PDF)</strong><p class="muted">Eligibility & process</p></a>
+          <a class="card" href="#"><strong>Mentor Handbook (PDF)</strong><p class="muted">Best practices</p></a>
+          <a class="card" href="#"><strong>Event Kit (ZIP)</strong><p class="muted">Run a chapter event</p></a>
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}
+
+{% block page_scripts %}
+{% endblock %}

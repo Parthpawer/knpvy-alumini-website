@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'app/css/awards.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<!-- HERO (image removed, layout kept) -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <div class="breadcrumbs"><a href="home.html">Home</a> • Awards</div>
+        <h1 style="margin-top:8px">Awards & Honours</h1>
+        <p class="lead">A fresh look at how we recognise alumni excellence, early leadership, and service to KNPCVS.</p>
+        <div class="quicknav" aria-label="Quick navigation">
+          <a class="chip" href="#categories">Categories</a>
+          <a class="chip" href="#winners">This Year’s Winners</a>
+          <a class="chip" href="#past">Past Awards</a>
+          <a class="chip" href="#gallery">Gallery</a>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <main id="main">
+    <!-- CATEGORIES (images removed from cards) -->
+    <section id="categories" class="section anchor">
+      <div class="container">
+        <h2>Categories</h2>
+        <p class="muted" style="margin-top:6px">Explore the award categories and what each one recognises.</p>
+        <div class="cat-grid" style="margin-top:12px">
+          <article class="card cat" data-category="Distinguished Alumni">
+            <h3>Distinguished Alumni</h3>
+            <p class="muted">Honours alumni with significant, sustained impact in their field with national or international recognition.</p>
+          </article>
+          <article class="card cat" data-category="Young Achiever">
+            <h3>Young Achiever</h3>
+            <p class="muted">Recognises early-career excellence or innovation within 10 years of graduation.</p>
+          </article>
+          <article class="card cat" data-category="Service to Alma Mater">
+            <h3>Service to Alma Mater</h3>
+            <p class="muted">Celebrates exceptional, sustained service or philanthropy that benefits KNPCVS and its students.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- THIS YEAR'S WINNERS -->
+    <section id="winners" class="section anchor" style="background:var(--blue-100)">
+      <div class="container">
+        <div class="controls" style="justify-content:space-between">
+          <div>
+            <h2>This Year’s Winners (2025)</h2>
+            <p class="muted" style="margin-top:6px">Filter by category or search by name.</p>
+          </div>
+          <div class="controls" role="group" aria-label="Winners filters">
+            <label class="control" for="wcat"><span><strong>Category</strong></span>
+              <select id="wcat" aria-label="Filter winners by category">
+                <option value="">All</option>
+                <option value="Distinguished Alumni">Distinguished Alumni</option>
+                <option value="Young Achiever">Young Achiever</option>
+                <option value="Service to Alma Mater">Service to Alma Mater</option>
+              </select>
+            </label>
+            <label class="control" for="wsearch"><span><strong>Search</strong></span>
+              <input id="wsearch" type="search" placeholder="Search by name…" aria-label="Search winners by name">
+            </label>
+          </div>
+        </div>
+
+        <div class="winners" style="margin-top:12px" id="winnersGrid">
+          <article class="card winner big" data-year="2025" data-award="Distinguished Alumni" data-name="Dr. Alumnus Prime">
+            <div class="tile"><img src="assets/winner-distinguished.jpg" alt="2025 Distinguished Alumni winner"></div>
+            <div>
+              <span class="badge">Distinguished Alumni</span>
+              <h3>Dr. Alumnus Prime</h3>
+              <p class="muted">Global research leadership in veterinary public health; policy impact across regions.</p>
+            </div>
+            <div><a class="btn" href="#">Profile</a></div>
+          </article>
+
+          <article class="card winner small1" data-year="2025" data-award="Young Achiever" data-name="Dr. Nova Path">
+            <div class="tile"><img src="assets/winner-young.jpg" alt="2025 Young Achiever winner"></div>
+            <div><span class="badge">Young Achiever</span><h3>Dr. Nova Path</h3><p class="muted">Founded an animal-health diagnostics startup.</p></div>
+            <div><a class="btn" href="#">Profile</a></div>
+          </article>
+
+          <article class="card winner small2" data-year="2025" data-award="Service to Alma Mater" data-name="Dr. Campus Heart">
+            <div class="tile"><img src="assets/winner-service.jpg" alt="2025 Service to Alma Mater winner"></div>
+            <div><span class="badge">Service to Alma Mater</span><h3>Dr. Campus Heart</h3><p class="muted">Led mentorship & scholarship drives; 500+ volunteer hours.</p></div>
+            <div><a class="btn" href="#">Profile</a></div>
+          </article>
+        </div>
+        <p id="noWinners" class="muted is-hidden" aria-live="polite">No winners match your selection.</p>
+      </div>
+    </section>
+
+    <!-- PAST AWARDS (defaults to last year) -->
+    <section id="past" class="section anchor">
+      <div class="container with-rail">
+        <aside class="rail">
+          <div class="card" role="region" aria-label="Past awards filters">
+            <div class="control">
+              <span><strong>Year</strong></span>
+              <select id="pyear" aria-label="Filter past awards by year">
+                <option>2025</option>
+                <option selected>2024</option>
+                <option>2023</option>
+              </select>
+            </div>
+            <div class="control" style="margin-top:10px">
+              <span><strong>Category</strong></span>
+              <select id="pcat" aria-label="Filter past awards by category">
+                <option value="">All</option>
+                <option value="Distinguished Alumni">Distinguished Alumni</option>
+                <option value="Young Achiever">Young Achiever</option>
+                <option value="Service to Alma Mater">Service to Alma Mater</option>
+              </select>
+            </div>
+          </div>
+        </aside>
+
+        <div>
+          <h2>Past Awards</h2>
+
+          <!-- 2025 -->
+          <section class="group past-group" data-year="2025">
+            <h3>2025</h3>
+            <div class="rec-grid">
+              <article class="rec" data-award="Distinguished Alumni"><img src="assets/rec-2025-dist.jpg" alt="Recipient headshot" loading="lazy"><div><strong>Dr. Alumnus Prime</strong><small class="muted">Distinguished Alumni • 2025</small></div></article>
+              <article class="rec" data-award="Young Achiever"><img src="assets/rec-2025-young.jpg" alt="Recipient headshot" loading="lazy"><div><strong>Dr. Nova Path</strong><small class="muted">Young Achiever • 2025</small></div></article>
+              <article class="rec" data-award="Service to Alma Mater"><img src="assets/rec-2025-service.jpg" alt="Recipient headshot" loading="lazy"><div><strong>Dr. Campus Heart</strong><small class="muted">Service to Alma Mater • 2025</small></div></article>
+            </div>
+          </section>
+
+          <!-- 2024 -->
+          <section class="group past-group" data-year="2024">
+            <h3>2024</h3>
+            <div class="rec-grid">
+              <article class="rec" data-award="Distinguished Alumni"><img src="assets/rec-2024-dist.jpg" alt="Recipient headshot" loading="lazy"><div><strong>Dr. Pioneer Vet</strong><br><small class="muted">Distinguished Alumni • 2024</small></div></article>
+              <article class="rec" data-award="Young Achiever"><img src="assets/rec-2024-young.jpg" alt="Recipient headshot" loading="lazy"><div><strong>Dr. Early Rise</strong><br><small class="muted">Young Achiever • 2024</small></div></article>
+              <article class="rec" data-award="Service to Alma Mater"><img src="assets/rec-2024-service.jpg" alt="Recipient headshot" loading="lazy"><div><strong>Dr. Alma Ally</strong><br><small class="muted">Service to Alma Mater • 2024</small></div></article>
+            </div>
+          </section>
+
+          <!-- 2023 -->
+          <section class="group past-group" data-year="2023">
+            <h3>2023</h3>
+            <div class="rec-grid">
+              <article class="rec" data-award="Distinguished Alumni"><img src="assets/rec-2023-dist.jpg" alt="Recipient headshot" loading="lazy"><div><strong>Dr. Global Trail</strong><small class="muted">Distinguished Alumni • 2023</small></div></article>
+              <article class="rec" data-award="Young Achiever"><img src="assets/rec-2023-young.jpg" alt="Recipient headshot" loading="lazy"><div><strong>Dr. Spark Start</strong><small class="muted">Young Achiever • 2023</small></div></article>
+              <article class="rec" data-award="Service to Alma Mater"><img src="assets/rec-2023-service.jpg" alt="Recipient headshot" loading="lazy"><div><strong>Dr. Campus Pillar</strong><small class="muted">Service to Alma Mater • 2023</small></div></article>
+            </div>
+          </section>
+
+          <p id="noPast" class="muted is-hidden" aria-live="polite">No past awards match your filters.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section anchor">
+      <div class="container">
+        <h2>Ceremony Gallery</h2>
+        <div class="gallery" style="margin-top:12px">
+          <div class="shot"><img src="assets/gallery-awards-1.jpg" alt="Ceremony photo 1" loading="lazy"></div>
+          <div class="shot"><img src="assets/gallery-awards-2.jpg" alt="Ceremony photo 2" loading="lazy"></div>
+          <div class="shot"><img src="assets/gallery-awards-3.jpg" alt="Ceremony photo 3" loading="lazy"></div>
+          <div class="shot"><img src="assets/gallery-awards-4.jpg" alt="Ceremony photo 4" loading="lazy"></div>
+          <div class="shot"><img src="assets/gallery-awards-5.jpg" alt="Ceremony photo 5" loading="lazy"></div>
+          <div class="shot"><img src="assets/gallery-awards-6.jpg" alt="Ceremony photo 6" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% endblock %}
+
+{% block page_scripts %}
+<script src="{% static 'app/js/awards.js' %}"></script>
+{% endblock %}

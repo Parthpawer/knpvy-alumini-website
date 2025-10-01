@@ -24,5 +24,13 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('about/history/', views.about, name = 'history'),
     path('about/executive_body/', views.executive_body, name = 'executive-body'),
-    path('events/', views.events, name='events')
+    path('events/', views.events, name='events'),
+    path('awards/', views.awards, name = 'awards'),
+    path('activity/', views.activity, name = 'activity'),
+    path('placement/', views.placement, name = 'placement'),
+    path('scholarship/', views.scholarship, name = 'scholarship'),
+    path('assistanceship/', views.assistanceship, name = 'assistanceship'),
+    path('clinical-guidance/', views.clinical_guidance, name='clinical-guidance'),
+    path('research/', views.research, name='research'),
+    path('farmers-corner/', views.farmers_corner, name='farmers_corner'),
 ]
