@@ -69,9 +69,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'alumni_portal.wsgi.application'
 
-STATIC_URL = "static/"
+# --- Static files ---
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"               # ← required for collectstatic
+STATICFILES_DIRS = [BASE_DIR / "static"]  
 
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
